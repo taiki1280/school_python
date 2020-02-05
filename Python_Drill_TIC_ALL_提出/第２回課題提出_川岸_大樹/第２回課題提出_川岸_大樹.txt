@@ -1,0 +1,69 @@
+﻿06-01
+  ア  num = 3
+  イ  num % 2
+  ウ  else
+
+06-02
+  ア  99
+  イ  sum >= 120 and score1 >= 40 and score2 >= 40
+  ウ  sum >= 110
+
+B-01
+  ア  input("得点を入力してください：")
+  イ  score >= 70
+
+B-02
+  ア  "不合格"
+  イ  "合格"
+  ウ  "不合格"
+  エ  score1 >= 70 and score2 >= 70
+
+B-03
+  ア  year % 4 == 0 and year % 100 != 100 and year % 400 == 0
+
+07-01
+  ア  ["orange", "apple", "banana", "apple"]
+  イ  "apple"
+  ウ  "banana"
+  エ  "apple"
+  オ  reverse
+
+07-02
+  ア  6
+  イ  1
+  ウ  [1, 2, 3, 4, 5, 6, 7, 8]
+  エ  2
+
+08-01
+  ア  (1, (2, 3))
+
+08-02
+  ア  ()
+  イ  ("Hello",)
+
+09-01
+  ア、オ
+
+10-01
+  ア  7, 21
+  イ  i * 2
+
+10-02
+  ア  range(2, 11)
+  イ  x % n == 0
+  ウ  break
+  エ  else
+
+10-03
+  ア  range(1, count + 1)
+  イ  total += value
+  ウ  tpl.format(count, total)
+
+10-04
+  ア  range(1, number + 1)
+  イ  prompt = "{}件目のデータを入力：".format(value)
+  ウ  int(input(prompt))
+  エ  total += data
+  オ  total / number
+  カ  format(total, average)
+
