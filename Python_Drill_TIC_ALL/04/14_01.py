@@ -1,0 +1,8 @@
+print("ア", "ああ\aああ".splitlines())
+print("イ", "ああ\nああ".splitlines())
+print("ウ", "ああ\sああ".splitlines())
+print("エ", "ああ\tああ".splitlines())
+print("オ", "ああ\r\nああ".splitlines())
+print("カ", "ああ\g\fああ".splitlines())
+print("キ", "ああ\x0aああ".splitlines())
+print("ク", "ああ\x0bああ".splitlines())

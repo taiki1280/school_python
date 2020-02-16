@@ -1,0 +1,73 @@
+11-01
+  ア、イ、ウ、エ、オ
+
+11-02
+  ア  {"国語": 75, "算数": 80}
+  イ  del
+  ウ  result_of_exam["数学"] = 80
+      [別解]
+      (1) result_of_exam.update({"数学": 80})
+      (2) result_of_exam.setdefault("数学", 80)
+  エ  update
+
+C-01
+  ア  ken_name in kanto
+
+C-02
+  ア  num_list
+  イ  total += value
+  ウ  total / len(num_list)
+  エ  format(total, average)
+
+C-03
+  ア  value in num_list
+  イ  max < value
+  ウ  min > value
+  エ  format(max, min)
+
+C-04
+  ア  range(10)
+  イ  format(number + 1)
+  ウ  int(input(prompt))
+  エ  data % 2 == 0
+  オ  even_list.append(data)
+  カ  odd_list.append(data)
+
+C-05
+  ア  value in num_list
+  イ  value > max
+  ウ  num_list.remove(max)
+
+C-06
+  ア  range(len(list_a))
+      [別解]
+      range(len(list_b))
+  イ  list_add.append(list_a[index] + list_b[index])
+
+C-07
+  ア  range(0, len(num_list) - 1)
+  イ  range(index1 + 1, len(num_list) - 1)
+  ウ  num_list[index1] < num_list[index2]
+  エ  num_list[index1] = num_list[index2]
+
+C-08
+  ア  key in tohoku
+  イ  tohoku[key]
+  
+C-09
+  ア  count in range(1,number + 1)
+  イ  person[name] = age
+  ウ  key, person[key]
+
+C-10
+  ア  count in range(1,number + 1)
+  イ  person[name] = age
+  ウ  key, person[key]
+  エ  total += person[key]
+  オ  person[key]
+  カ  total / len(person)
+
+C-11
+  ア  key
+  イ  city[key][0]
+  ウ  city[key][1])

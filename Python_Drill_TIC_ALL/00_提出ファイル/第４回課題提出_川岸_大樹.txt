@@ -1,0 +1,245 @@
+12-01
+  ア  number % divisor
+  イ  divisor += 1
+  ウ  divisor
+  エ  number
+
+12-02
+  ア  number < 1000000
+  イ  *= 2
+  ウ  += 1
+
+12-03
+  ア  number <= 100
+  イ  total += number
+  ウ  number += 1
+
+12-04
+  ア  count <= end_num
+  イ  total += count
+  ウ  count += 1
+  エ  format(start_num, end_num, total)
+
+12-05
+  ア  True
+  イ  input_data < 0
+  ウ  break
+  エ  total += input_data
+  オ  number += 1
+  カ  total / number
+
+12-06
+  ア  index <= len(num_list) - 1
+  イ  max < num_list[index]
+  ウ  index += 1
+  エ  num_list.remove(max)
+
+13-01
+  ア  ['1', '2', '3']
+  イ  ['1', '2,3']
+  ウ  ['1', '2', '', '3', '']
+
+13-02
+  イ
+
+14-01
+  イ、オ、キ、ク
+
+14-01
+  ア  ['a', 'b', 'c', 'd']
+  イ  ['a\n', 'b\r', 'c\x0b', 'd']
+
+15-01
+  ア  with
+  イ  open
+  ウ  f
+
+15-02
+  ア  with
+  イ  open
+  ウ  mode="w"
+  エ  f
+  オ  write("Hello")
+
+15-03
+  ア  data.txt
+  イ  mode="w"
+  ウ  True
+  エ  str_data == "end"
+  オ  write
+  カ  close()
+
+15-04
+  ア  data.txt
+  イ  "w"
+  ウ  True
+  エ  str_data == "end"
+  オ  break
+  カ  write
+  キ  str(line_number)
+  ク  line_number += 1
+  ケ  close()
+
+15-05
+  ア  file_name
+  イ  "a"
+  ウ  True
+  エ  str_data == "end"
+  オ  break
+  カ  write
+  キ  str(line_number)
+  ク  line_number += 1
+  ケ  close()
+
+15-06
+  ア  file_name
+  イ  "a"
+  ウ  count in range(1, number + 1)
+  エ  person[name] = age
+  オ  key in person
+  カ  person[key]
+  キ  write
+  ク  close()
+
+15-07
+  ア  person.txt
+  イ  "r"
+  ウ  read()
+  エ  close()
+
+15-08
+  ア  person.txt
+  イ  "r"
+  ウ  read()
+  エ  close()
+  オ  .split("、")
+
+15-09
+  ア  person.txt
+  イ  "r"
+  ウ  read()
+  エ  close()
+  オ  .splitlines()
+
+15-10
+  ア  person.txt
+  イ  "r"
+  ウ  read()
+  エ  close()
+  オ  .splitlines()
+  カ  value in read_line
+  キ  f"{line_number} ： {value}"
+
+16-01
+  ア  import math
+  イ  from math import sqrt
+  ウ  from math import sqrt as root
+
+16-02
+  使用しないのにも関わらず無駄にインポートしてしまう問題が生じる
+
+17-01
+  ア  def
+  イ  print("ふたつめの関数です")
+  ウ  print("ひとつめの関数です")
+
+17-01
+  my_func()を最も下(呼び出す関数よりも下)に移動する。
+  [理由]
+  pythonは逐次型であり、上から下へ一行ずつコードが実行されるので、関数を呼び出すよりも先に関数を定義する必要がある為。
+
+18-01
+  ア  def
+  イ  return 50000000000000002
+  ウ  return "これは%sです"
+
+18-02
+  ア  None
+  イ  2
+      None
+  ウ  3
+
+D-01
+  ア  def
+  イ  range(10)
+  ウ  hello_10times()
+
+D-02
+  ア  def
+  イ  hello_times(3)
+  ウ  hello_times(5)
+
+D-03
+  ア  range(times)
+  イ  print(str)
+  ウ  disp_times("Hello", 3)
+  エ  disp_times("Good morning", 5)
+  オ  disp_times("Good evening", 2)
+
+D-04
+  ア  return x + y
+  イ  return x - y
+  ウ  return x * y
+  エ  return x / y
+  オ  return x % y
+  カ  return x ** y
+  キ  op == "+"
+  ク  op == "-"
+  ケ  op == "*"
+  コ  op == "/"
+  サ  op == "%"
+  シ  op == "**"
+  ス  x, y, add(x, y)
+  セ  x, y, sub(x, y)
+  ソ  x, y, mul(x, y)
+  タ  x, y, div(x, y)
+  チ  x, y, mod(x, y)
+  ツ  x, y, pow(x, y)
+
+D-05
+  ア  weight / (height ** 2)
+  イ  return bmi
+  ウ  height ** 2 * 22
+  エ  return proper_weight
+  オ  float
+  カ  calc_bmi(weight, height)
+  キ  calc_proper_weight(height)
+
+D-06
+  ア  calc_bmi, calc_proper_weight
+  イ  float
+  ウ  calc_bmi(weight, height)
+  エ  calc_proper_weight(weight)
+  オ  40.00 <= bmi
+  カ  35.00 <= bmi and bmi <= 39.99
+  キ  30.00 <= bmi and bmi <= 34.99
+  ク  25.00 <= bmi and bmi <= 29.99
+  ケ  18.50 <= bmi and bmi <= 24.99
+  コ  17.00 <= bmi and bmi <= 18.49
+  サ  16.00 <= bmi and bmi <= 16.99
+
+D-07
+  ア  list
+  イ  length += 1
+  ウ  return length
+  エ  my_len(list1)
+  オ  my_len(list2)
+  カ  my_len(list3)
+  キ  my_len(list4)
+
+D-08
+  ア  list
+  イ  total += element
+  ウ  return total
+  エ  list_sum(list)
+
+D-09
+  ア  list
+  イ  element == value
+  ウ  list_search(list, element)
+
+D-10
+  ア  list
+  イ  bool(element % 2)
+  ウ  odd_list += [element]
+  エ  return odd_list
