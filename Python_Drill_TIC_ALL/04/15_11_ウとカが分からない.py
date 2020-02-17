@@ -5,10 +5,10 @@ read_file_name = input('コピー元：')
 write_file_name = input('コピー先：')
 # コピー元のファイルを読み込みモードでオープン
 # read_file = open(___ア___, ___イ___, ___ウ___)
-read_file = open(read_file_name, "r")
+read_file = open(read_file_name, "r", "utf-8")
 # コピー先ファイルを書き込みモードでオープン
 # write_file = open(___エ___, ___オ___, ___カ___)
-write_file = open(write_file_name, "w")
+write_file = open(write_file_name, "w", "utf-8")
 # コピー元からデータを読み込む
 # raw_data = read_file.___キ___
 raw_data = read_file.read()
