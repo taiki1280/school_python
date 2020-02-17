@@ -11,7 +11,7 @@
   イ  print("ふたつめの関数です")
   ウ  print("ひとつめの関数です")
 
-17-01
+17-02
   my_func()を最も下(呼び出す関数よりも下)に移動する。
   [理由]
   pythonは逐次型であり、上から下へ一行ずつコードが実行されるので、関数を呼び出すよりも先に関数を定義する必要がある為。
@@ -111,3 +111,42 @@ D-10
   イ  bool(element % 2)
   ウ  odd_list += [element]
   エ  return odd_list
+  オ  create_odd_list(list)
+
+D-11
+  ア  list
+  イ  bool(element % 2) == False
+  ウ  even_list += [element]
+  エ  odd_list += [element]
+  オ  return (even_list, odd_list)
+  カ  create_even_odd_list(list)
+  キ  result[0]
+  ク  result[1]
+
+D-12
+  ア  dict
+  イ  dict[key]
+  ウ  disp_dict(tohoku)
+
+D-13
+  ア  value in prefecture
+  イ  total += prefecture[value]
+  ウ  return total
+  エ  name in prefecture
+  オ  prefecture[name]
+  カ  disp_prefecture(tohoku)
+  キ  prefecture_total(tohoku)
+  ク  format(total_population)
+
+D-14
+  ア  True
+  イ  name == "end"
+  ウ  (kokugo, sansu, rika)
+  エ  personal_grade[name] = score
+  オ  return personal_grade
+  カ  name in score
+  キ  score[name][0]
+  ク  score[name][1]
+  ケ  score[name][2]
+  コ  input_score()
+  サ  disp_score(personal_info)
