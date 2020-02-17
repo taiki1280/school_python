@@ -130,3 +130,14 @@
   カ  value in read_line
   キ  f"{line_number} ： {value}"
 
+15-11
+  ア  read_file_name
+  イ  "r"
+  ウ  encoding="utf-8"
+  エ  write_file_name
+  オ  "w"
+  カ  encoding="utf-8"
+  キ  read()
+  ク  write(raw_data)
+  ケ  close()
+
