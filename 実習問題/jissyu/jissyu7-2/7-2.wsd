@@ -1,0 +1,18 @@
+@startuml
+class Person{
+    private $name;
+    private $age;
+    private $sex;
+    private $height;
+    private $weight;
+
+    __construct($name, $age, $sex, $height, $weight)
+    getBMI()
+    getObesity()
+    getIdealWeight()
+    personDisp()
+    bmiDisp()
+    obesityDisp()
+    idealWeightDisp()
+}
+@enduml

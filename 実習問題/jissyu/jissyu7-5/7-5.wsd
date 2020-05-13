@@ -1,0 +1,22 @@
+@startuml
+interface Person{
+    introduce()
+
+}
+class Teacher{
+    private $name;
+    private $job;
+    private $subject;
+    __construct($name, $job,$subject)
+    introduce()
+}
+
+class Cock{
+    private $name;
+    private $job;
+    private $specialties;
+    __construct($name, $job,$specialties) 
+    introduce()
+}
+
+@enduml

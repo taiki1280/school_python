@@ -1,0 +1,19 @@
+@startuml
+class Teacher {
+  public $name;
+  public $age;
+  public $subject;
+  
+   __construct($name, $age ,$subject)
+   hello()
+}
+
+class Student {
+  public $name;
+  public $age;
+  public $grade;
+  
+   __construct($name, $age ,$grade)
+   hello()
+}
+@enduml

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>入力画面</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div>
+<?php
+    //セッションの開始
+    session_start();
+    require_once("util.php");
+  ?>
+
+<?php
+    /* 再入力ならば前回の値を初期値にする */
+    // 氏名に値があるかどうか
+    if (empty($_SESSION['name'])){
+      $name = "";
+    } else {
+      $name = $_SESSION['name'];
+    }
+    //年齢に値があるかどうか
+    if (empty($_SESSION['age'])){
+      $age = "";
+    } else {
+      $age = $_SESSION['age'];
+    }
+    //年齢に値があるかどうか
+    if (empty($_SESSION['adress'])){
+      $adress = "";
+    } else {
+      $adress = $_SESSION['adress'];
+    }
+    //年齢に値があるかどうか
+    if (empty($_SESSION['sex'])){
+      $sex = "";
+    } else {
+      $sex = $_SESSION['sex'];
+    }
+      // 趣味の値をいれる
+  if (empty($_SESSION['hobby'])){
+    $hobby = [];
+  } else {
+    $hobby = $_SESSION['hobby'];
+  }
+
+  // 調子の値の範囲
+  $min = 1;
+  $max = 5;
+  // SESSIONの値を取り出す
+  if (empty($_SESSION["condition"])){
+    // SESSIONされた値がないとき
+    $condition = round(($min+$max)/2);
+    $isCondition = true; // 初期値も普通を表示する
+  } else {
+    $condition = $_SESSION["condition"];
+    // 値が整数かつ範囲内かどうかをチェックする
+    $isCondition = ctype_digit($condition) && ($condition>=$min) && ($condition<=$max);
+    if (!$isCondition){
+      $errors[] = "調子の値にエラーがありました。";
+      $condition = $min;
+    }
+  }
+  // SESSIONされたテキスト文を取り出す
+  if (empty($_SESSION["introduction"])){
+        // SESSIONされた値がないとき
+        $introduction = "";
+  } else {
+    $introduction = $_SESSION["introduction"];
+    // HTMLタグやPHPタグを削除する
+    $introduction = strip_tags($introduction);
+    // 最大150文字だけ取り出す（改行コードもカウントする）
+    $introduction = mb_substr($introduction, 0, 150);
+    // HTMLエスケープを行う
+    $introduction = es($introduction);
+  }
+  
+  // 日付の初期値（本日）
+  $theYear = date('Y');
+  $theMonth = date('n');
+  $theDay = date('j');
+  // POSTされた値を取り出す
+  if (empty($_SESSION["year"])&&empty($_SESSION["month"])&&empty($_SESSION["day"])){
+    $isDate = false;
+  } else {
+    $theYear = $_SESSION["year"];
+    $theMonth = $_SESSION["month"];
+    $theDay = $_SESSION["day"];
+    // 値が日付として正しいかチェックする
+    $isDate = checkdate($theMonth, $theDay, $theYear);
+    if (!$isDate){
+      $errors[] = "日付として正しくありません。";
+    } else {
+      // 日付オブジェクトを作る
+      $dateString = $theYear . "-". $theMonth . "-" . $theDay;
+      $dateObj = new DateTime($dateString);
+    }
+  }
+?>
+
+<?php
+ // 今年より30年前のプルダウンメニューを作る
+ function yearOption(){
+   global $theYear;
+   // 今年
+   $thisYear = date('Y');
+   $startYear = $thisYear - 30;
+   $endYear = $thisYear;
+   echo '<select name="year">', '\n';
+   for ($i=$startYear; $i <= $endYear; $i++) {
+     // POSTされた年を選択する
+     if ($i==$theYear){
+       echo "<option value={$i} selected>{$i}</option>", "\n";
+     } else {
+       echo "<option value={$i}>{$i}</option>", "\n";
+     }
+   }
+   echo '</select>';
+ }
+
+  // 1〜12月のプルダウンメニューを作る
+ function monthOption(){
+   global $theMonth;
+   echo '<select name="month">';
+   for ($i=1; $i <= 12; $i++) {
+     // POSTされた月を選択する
+     if ($i==$theMonth){
+       echo "<option value={$i} selected>{$i}</option>", "\n";
+     } else {
+       echo "<option value={$i}>{$i}</option>", "\n";
+     }
+   }
+   echo '</select>';
+ }
+
+ // 1〜31日のプルダウンメニューを作る
+ function dayOption(){
+   global $theDay;
+   echo '<select name="day">';
+   for ($i=1; $i <= 31; $i++) {
+     // POSTされた日を選択する
+     if ($i==$theDay){
+       echo "<option value={$i} selected>{$i}</option>", "\n";
+     } else {
+       echo "<option value={$i}>{$i}</option>", "\n";
+     }
+   }
+   echo '</select>';
+ }
+?>
+
+<?php
+  // 初期値でチェックするかどうか
+  function selected($value, $question){
+    if (is_array($question)){
+      // 配列のとき、値が含まれていればtrue
+      $isSelected = in_array($value, $question);
+    } else {
+      // 配列ではないとき、値が一致すればtrue
+      $isSelected = ($value===$question);
+    }
+    if ($isSelected) {
+      // チェックする
+      echo "selected";
+    } else {
+      echo "";
+    }
+  }
+ ?>
+ 
+<form method="POST" action="confirmation_screen.php">
+  <ul>
+  <!-- valueには前回の値が初期値として入ります -->
+    <li><label>氏名<input type="text" name="name" value="<?php echo $name; ?>"></label></li>
+    <li><label>年齢<input type="number" name="age" value="<?php echo $age; ?>"></label></li>
+    <li><label>郵便番号<input type="text" name="adress" value="<?php echo $adress; ?>"></label></li>
+    <li><span>性別</span>
+    <select name ="sex">
+    <option value="男性" <?php selected("男性",$sex); ?>>男性</option>
+    <option value="女性" <?php selected("女性",$sex); ?>>女性</option>
+    </select>
+    </li>
+    <li><span>趣味</span>
+    <select name="hobby[]" size="3" multiple>
+        <option value="音楽" <?php selected("音楽", $hobby); ?> >音楽</option>
+        <option value="映画" <?php selected("映画", $hobby); ?> >映画</option>
+        <option value="ダンス" <?php selected("ダンス", $hobby); ?> >ダンス</option>
+        <option value="料理" <?php selected("料理", $hobby); ?> >料理</option>
+        <option value="スポーツ" <?php selected("スポーツ", $hobby); ?> >スポーツ</option>
+    </select>
+    </li>
+    <li><span>調子</span>
+        <input type="range" name="condition" min="1" max="5" step="1" value="<?php echo $condition;?>" >
+    </li>
+    <li><span>自己紹介</span>
+        <textarea name="introduction" cols="25" rows="4" maxlength="100" placeholder="自己紹介記入欄です。"><?php echo $introduction; ?></textarea>
+      </li>
+    <li><span>生年月日</span>
+    <?php yearOption(); ?>年
+    <?php monthOption();?>月
+    <?php dayOption(); ?>日
+    </li>
+    <li><input type="submit" value="送信する"></li>
+  </ul>
+</form>
+</div>
+</body>
+</html>

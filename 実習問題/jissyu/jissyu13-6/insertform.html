@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>レコード追加</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div>
+  <!-- 入力フォームを作る -->
+  <form method="POST" action="insert.php">
+    <ul>
+      <li>
+        <label>名前：
+        <input type="text" name="name" placeholder="名前" size="24">
+        </label>
+      </li>
+      <li>
+        <label>メールアドレス：
+        <input type="email" name="email" placeholder="半角英数字" size="24">
+        </label>
+      </li>
+      <li>パスワード：
+        <label><input type="password" name="password" size="24"></label>
+      </li>
+      <li><input type="submit" value="追加する"></li>
+    </ul>
+  </form>
+</div>
+</body>
+</html>

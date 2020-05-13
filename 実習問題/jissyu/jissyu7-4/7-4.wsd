@@ -1,0 +1,15 @@
+@startuml
+class Person{
+    private $name;
+    private $job;
+    __construct($name, $job,subject)
+    person_introduce()
+
+}
+class Teacher{ 
+    private $subject;
+    teacher_introduce()
+}
+
+@enduml
+plantumlはtraitに対応しておりません。
