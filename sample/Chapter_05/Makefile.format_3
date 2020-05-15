@@ -1,0 +1,9 @@
+PROGRAM =       format_3
+OBJS    =       format_3.o
+SRCS    =       $(OBJS:%.o=%.c)
+CC      =       gcc
+CFLAGS  =       -g -Wall
+LDFLAGS =
+
+$(PROGRAM):$(OBJS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PROGRAM) $(OBJS) $(LDLIBS)

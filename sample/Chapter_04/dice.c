@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>                     // srand(), rand()のため
+#include <time.h>                       // time() のため
+
+int
+main(int argc, char *argv[])
+{
+    int c;
+
+    srand(time(NULL));                  // 乱数を使うためのおまじない
+    
+    do {
+        printf("%d\n", rand() % 6 + 1); // 1～6までのランダムな数値を得る
+        c = getchar();                  // 1文字キーボードから入力を得る
+    } while (c != 'q');                 // 入力された1文字がqではない間繰り返す
+    return 0;
+}
