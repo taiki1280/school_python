@@ -1,19 +1,19 @@
 <?php
-class Teacher
+class Student
 {
     public $name;
     public $age;
-    public $subject;
-    function __construct($name, $age, $subject)
+    public $grade;
+    function __construct($name, $age, $grade)
     {
         $this->name = $name;
         $this->age = $age;
-        $this->subject = $subject;
+        $this->grade = $grade;
     }
     public function hello()
     {
         echo "こんにちは、{$this->name}です。\n";
         echo "年齢は、{$this->age}歳です。\n";
-        echo "担当科目は{$this->subject}です。\n";
+        echo "学年は、{$this->grade}年生です。\n";
     }
 }
