@@ -19,6 +19,7 @@ $array = [
 ?>
 
 <body>
+    <h1>東北６県基本情報</h1>
     <table border="1">
         <tr>
             <td>県名</td>
