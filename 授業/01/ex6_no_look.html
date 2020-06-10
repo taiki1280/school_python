@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <table id="app">
+    <caption></caption>
+    <tr v-for="city in cities">
+      <td>{{ city.name }}</td>
+      <td>{{ city.population }}</td>
+      <td>{{ city.govermentCity }}</td>
+    </tr>
+  </table>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        cities: [
+          { name:"青森市",population:28.76,govermentCity:false},
+          { name:"仙台市",population:108.2,govermentCity:true},
+          { name:"盛岡市",population:29.76,govermentCity:false}
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>
