@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>React ver</h1>
+  <h2>属性をバインドする例</h2>
+  <div id="root">wait...</div>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <script type="text/babel">
+    let dom = document.querySelector('#root');
+    let companies = [
+      "Yahoo",
+      "Google",
+      "MicroSoft"
+    ];
+    let companies_logo = {
+      "img/Yahoo_logo.png": "https://www.yahoo.co.jp/",
+      "img/Google_logo.png": "https://www.google.com/",
+      "img/MS_logo.png": "https://www.msn.com/ja-jp/"
+    }
+
+
+    let el = (
+      <table border="1">
+        <caption>代表的検索サイト</caption>
+        <tr>
+          <td>{companies}</td>
+          <td>{companies_logo}</td>
+        </tr>
+      </table>
+    );
+    ReactDOM.render(el, dom);
+
+  </script>
+</body>
+
+</html>

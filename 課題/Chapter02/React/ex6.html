@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>React ver</h1>
+  <div id="root">wait...</div>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <script type="text/babel">
+    let dom = document.querySelector('#root');
+
+    let cities = [
+      {
+        name: "青森市",
+        population: 28.76,
+        govermentCity: "false"
+      },
+      {
+        name: "仙台市",
+        population: 108.2,
+        govermentCity: "true"
+      },
+      {
+        name: "盛岡市",
+        population: 29.76,
+        govermentCity: "false",
+      }
+    ];
+
+    let el = (
+      <div>
+        <table border="1">
+          <caption>主要都市情報</caption>
+          <tr>
+            <th>都市名</th>
+            <th>人口</th>
+            <th>政令指定都市</th>
+          </tr>
+          <tr>
+            <td>{cities[0].name}</td>
+            <td>{cities[0].population}</td>
+            <td>{cities[0].govermentCity}</td>
+          </tr>
+          <tr>
+            <td>{cities[1].name}</td>
+            <td>{cities[1].population}</td>
+            <td>{cities[1].govermentCity}</td>
+          </tr>
+          <tr>
+            <td>{cities[2].name}</td>
+            <td>{cities[2].population}</td>
+            <td>{cities[2].govermentCity}</td>
+          </tr>
+        </table>
+      </div>
+    );
+
+    ReactDOM.render(el, dom);
+
+  </script>
+</body>
+
+</html>
