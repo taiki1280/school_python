@@ -11,9 +11,11 @@
     <div>
         <?php
         // フォーム入力値の取得
-        $name = $_GET["name"];
-        $age = $_GET["age"];
-        $post_num = $_GET["post_num"];
+        $name = $_POST["name"];
+        $age = $_POST["age"];
+        $post_num = $_POST["post_num"];
+        $sex = $_POST["sex"];
+        $hobby = $_POST["hobby"];
         require_once "util.php";
         // 表示
         if (preg_match("/.+/", $name))
@@ -28,11 +30,16 @@
             echo "郵便番号は", es($post_num), "です。<br>", PHP_EOL;
         else
             echo "郵便番号を正しく入力してください", "<br>", PHP_EOL;
+        // if (isSet($sex))
+        echo "性別は", es($sex), "<br>", PHP_EOL;
+        echo "趣味は", es($hobby), "<br>", PHP_EOL;
+        // echo "性別にチェックをいれてください", "<br>", PHP_EOL;
+
         ?>
 
         <!-- input_screen.phpに情報を渡すためのフォーム(項目表示はしない) -->
         <!-- 戻るボタンのみ表示 -->
-        <form method="GET" action="input_screen.php" style="display: hidden;">
+        <form method="POST" action="input_screen.php" style="display: hidden;">
             <input type="hidden" name="name" value=<?= $name ?>>
             <input type="hidden" name="age" value=<?= $age ?>>
             <input type="hidden" name="post_num" value=<?= $post_num ?>>

@@ -17,14 +17,16 @@
         require_once("util.php");
 
         if (preg_match("/.+/", $name))
-            echo "年齢は", es($name), "<br>", PHP_EOL;
+            echo "名前は", es($name), "<br>", PHP_EOL;
         else
-            echo "名前をで入力してください。", "<br>", PHP_EOL;
+            echo "名前を入力してください。", "<br>", PHP_EOL;
 
+        // 数字しか入らないので不要ではあると思う
         if (preg_match("/\d+/", $age))
             echo "年齢は", es($age), "です。<br>", PHP_EOL;
         else
             echo "年齢を整数で入力してください。", "<br>", PHP_EOL;
+        
         if (preg_match("/\d{3}-\d{4}$/", $post_num))
             echo "郵便番号は", es($post_num), "です。<br>", PHP_EOL;
         else

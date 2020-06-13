@@ -14,7 +14,7 @@
         $name = $_GET["name"];
         $password = $_GET["password"];
         $email = $_GET["email"];
-        
+
         // 表示する
         require_once("util.php");
         echo "氏名：", es($name), "<br>", PHP_EOL;

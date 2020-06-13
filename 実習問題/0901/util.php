@@ -21,6 +21,7 @@ function cken(array $data)
         if (!mb_check_encoding($value)) {
             // 文字エンコードが一致しないとき
             $result = false;
+            // foreachでの走査をブレイクする
             break;
         }
     }
