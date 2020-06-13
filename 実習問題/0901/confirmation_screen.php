@@ -32,8 +32,9 @@
             echo "郵便番号を正しく入力してください", "<br>", PHP_EOL;
         // if (isSet($sex))
         echo "性別は", es($sex), "<br>", PHP_EOL;
-        echo "趣味は", es($hobby), "<br>", PHP_EOL;
         // echo "性別にチェックをいれてください", "<br>", PHP_EOL;
+        echo "趣味は", implode("と", $hobby), "です。";
+        // echo "趣味にチェックをいれてください", "<br>", PHP_EOL;
 
         ?>
 
@@ -43,6 +44,8 @@
             <input type="hidden" name="name" value=<?= $name ?>>
             <input type="hidden" name="age" value=<?= $age ?>>
             <input type="hidden" name="post_num" value=<?= $post_num ?>>
+            <input type="hidden" name="sex" value=<?= $sex ?>>
+            <input type="hidden" name="hobby[]" value=<?= $hobby ?>>
             <input type="submit" value="戻る">
         </form>
     </div>

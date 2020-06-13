@@ -26,11 +26,13 @@
                     <input type="radio" name="sex" value="女性">女性
                 </li>
                 <li>趣味
-                    <input type="checkbox" name="hobby" value="音楽">音楽
-                    <input type="checkbox" name="hobby" value="映画">映画
-                    <input type="checkbox" name="hobby" value="ダンス">ダンス
-                    <input type="checkbox" name="hobby" value="料理">料理
-                    <input type="checkbox" name="hobby" value="スポーツ">スポーツ
+                    <input type="checkbox" name="hobby[]" value="音楽" checked>音楽
+                    <?= var_dump($hobby) ?>
+                    <input type="checkbox" name="hobby[]" <?= in_array("音楽", $hobby) ? 'checked' : '' ?>value="音楽">音楽
+                    <input type="checkbox" name="hobby[]" <?= in_array("映画", $hobby) ? 'checked' : '' ?>value="映画">映画
+                    <input type="checkbox" name="hobby[]" <?= in_array("ダンス", $hobby) ? 'checked' : '' ?>value="ダンス">ダンス
+                    <input type="checkbox" name="hobby[]" <?= in_array("料理", $hobby) ? 'checked' : '' ?>value="料理">料理
+                    <input type="checkbox" name="hobby[]" <?= in_array("スポーツ", $hobby) ? 'checked' : '' ?>value="スポーツ">スポーツ
                 </li>
                 <li><input type="submit" value="確認"></li>
             </ul>
