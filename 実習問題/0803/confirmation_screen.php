@@ -32,7 +32,7 @@
 
         <!-- input_screen.phpに情報を渡すためのフォーム(項目表示はしない) -->
         <!-- 戻るボタンのみ表示 -->
-        <form method="GET" action="input_screen.php" style="display: hidden;">
+        <form method="GET" action="input_screen.php">
             <input type="hidden" name="name" value=<?= $name ?>>
             <input type="hidden" name="age" value=<?= $age ?>>
             <input type="hidden" name="post_num" value=<?= $post_num ?>>
