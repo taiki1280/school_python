@@ -17,7 +17,10 @@
     $hobby = $_POST["hobby"];
     $condition_level = $_POST["condition_level"];
     // 文字の\n意味を持たせて代入
-    $introduce = str_replace('\n', "\n", $_POST["introduce"])
+    $introduce = str_replace('\n', "\n", $_POST["introduce"]);
+    $year = $_POST["year"];
+    $month = $_POST["month"];
+    $day = $_POST["day"];
     ?>
     <form method="POST" action="confirmation_screen.php">
       <ul>
@@ -44,6 +47,29 @@
         </li>
         <li>自己紹介
           <textarea name="introduce"><?= $introduce ?></textarea>
+        </li>
+        <li>生年月日
+          <select name="year">
+            <option value="">----</option>
+            <?php foreach (range(1800, 2020) as $value) : ?>
+              <option value=<?= $value ?> <?= $value == $year ? "selected" : "" ?>><?= $value ?></option>
+            <?php endforeach ?>
+          </select>
+          年
+          <select name="month">
+            <option value="">--</option>
+            <?php foreach (range(1, 12) as $value) : ?>
+              <option value=<?= $value ?> <?= $value == $month ? "selected" : "" ?>><?= $value ?></option>
+            <?php endforeach ?>
+          </select>
+          月
+          <select name="day">
+            <option value="">--</option>
+            <?php foreach (range(1, 31) as $value) : ?>
+              <option value=<?= $value ?> <?= $value == $day ? "selected" : "" ?>><?= $value ?></option>
+            <?php endforeach ?>
+          </select>
+          日
         </li>
         <li><input type="submit" value="確認"></li>
       </ul>

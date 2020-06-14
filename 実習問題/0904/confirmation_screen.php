@@ -18,6 +18,9 @@
     $hobby = $_POST["hobby"];
     $condition_level = $_POST["condition_level"];
     $introduce = $_POST["introduce"];
+    $year = $_POST["year"];
+    $month = $_POST["month"];
+    $day = $_POST["day"];
 
     require_once "util.php";
     // 表示
@@ -57,9 +60,15 @@
         break;
     }
     echo "調子は{$condition}です。", nl2br("\n");
+    echo nl2br($introduce);
+
+    $datetime = new DateTime();
+    $datetime->setDate($year, $month, $day);
+    $week = ["日", "月", "火", "水", "木", "金", "土"];
+    $w = (int) $datetime->format('w');
+    echo "生年月日は、{$year}年{$month}月{$day}日", $week[$w], '曜日です。';
     ?>
     <!-- nl2brは改行コード(\n)を<br>に変換する関数 -->
-    <?= nl2br($introduce) ?>
 
     <!-- input_screen.phpに情報を渡すためのフォーム(項目表示はしない) -->
     <!-- 戻るボタンのみ表示 -->
@@ -80,7 +89,7 @@
       // inputデータは一行のみしか入力できない。
       // textareaは非表示にできない。
       // →改行コードを一時的に文字列"\n"に変換してPOST送信する
-      
+
       // 文頭文末の空白を削除
       $introduce = trim($introduce);
       // 改行コードを統一
@@ -88,6 +97,9 @@
       $introduce = str_replace(["\r\n", "\r"], '\n', $introduce);
       ?>
       <input type="hidden" name="introduce" value=<?= $introduce ?>>
+      <input type="hidden" name="year" value=<?= $year ?>>
+      <input type="hidden" name="month" value=<?= $month ?>>
+      <input type="hidden" name="day" value=<?= $day ?>>
       <input type="submit" value="戻る">
     </form>
   </div>
