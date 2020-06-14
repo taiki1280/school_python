@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-echo "こんにちは";
+echo "こんにちはz";
 ?>
 </body>
 </html>

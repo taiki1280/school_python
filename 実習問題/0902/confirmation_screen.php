@@ -2,9 +2,9 @@
 <html lang="ja">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>確認画面</title>
-  <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -19,25 +19,25 @@
     require_once "util.php";
     // 表示
     if (preg_match("/.+/", $name))
-      echo "こんにちは、", es($name), "さん。<br>", PHP_EOL;
+      echo "こんにちは、", es($name), "さん。", nl2br("\n");
     else
-      echo "名前を入力してください。", "<br>", PHP_EOL;
+      echo "名前を入力してください。", nl2br("\n");
     if (preg_match("/\d+/", $age))
-      echo "年齢は", es($age), "です。<br>", PHP_EOL;
+      echo "年齢は", es($age), "です。", nl2br("\n");
     else
-      echo "年齢を整数で入力してください。", "<br>", PHP_EOL;
+      echo "年齢を整数で入力してください。", nl2br("\n");
     if (preg_match("/\d{3}-\d{4}$/", $post_num))
-      echo "郵便番号は", es($post_num), "です。<br>", PHP_EOL;
+      echo "郵便番号は", es($post_num), "です。", nl2br("\n");
     else
-      echo "郵便番号を正しく入力してください", "<br>", PHP_EOL;
+      echo "郵便番号を正しく入力してください", nl2br("\n");
     if (isset($sex))
-      echo "性別は", es($sex), "<br>", PHP_EOL;
+      echo "性別は", es($sex), nl2br("\n");
     else
-      echo "性別にチェックをいれてください", "<br>", PHP_EOL;
+      echo "性別にチェックをいれてください", nl2br("\n");
     if (isset($hobby))
       echo "趣味は", implode("と", $hobby), "です。";
     else
-      echo "趣味にチェックをいれてください", "<br>", PHP_EOL;
+      echo "趣味にチェックをいれてください", nl2br("\n");
     ?>
     <!-- input_screen.phpに情報を渡すためのフォーム(項目表示はしない) -->
     <!-- 戻るボタンのみ表示 -->

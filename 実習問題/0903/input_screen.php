@@ -15,6 +15,8 @@
     $post_num = $_POST["post_num"];
     $sex = $_POST["sex"];
     $hobby = $_POST["hobby"];
+    $condition_level = $_POST["condition_level"];
+    $introduce = $_POST["introduce"];
     ?>
     <form method="POST" action="confirmation_screen.php">
       <ul>
@@ -35,6 +37,12 @@
             <option value="料理" <?= in_array("料理", $hobby) ? 'selected' : '' ?>>料理</option>
             <option value="スポーツ" <?= in_array("スポーツ", $hobby) ? 'selected' : '' ?>>スポーツ</option>
           </select>
+        </li>
+        <li>調子
+          <input type="range" name="condition_level" min="1" max="4" value=<?= $condition_level ?>>
+        </li>
+        <li>自己紹介
+          <textarea name="introduce"><?= $introduce ?></textarea>
         </li>
         <li><input type="submit" value="確認"></li>
       </ul>
