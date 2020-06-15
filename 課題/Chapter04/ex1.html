@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 演習問題</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>入力した数値のたし算</h2>
+  <div id="app">
+    数値１ = <input type="number" v-model="number1" placeholder="数値を入力してください">
+    <br>
+    数値２ = <input type="number" v-model="number2" placeholder="数値を入力してください">
+    <p>{{add(number1,number2)}}</p>
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        number1: '',
+        number2: '',
+      },
+      methods: {
+        add: function (num1, num2) {
+          if (num1 != '' && num2 != '') {
+            num1 = Number(num1);
+            num2 = Number(num2);
+            return num1 + " + " + num2 + " = " + (num1 + num2);
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

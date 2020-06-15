@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 演習問題</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>チェックボックスのONOFFを調べる例</h2>
+  <div id="app">
+    <ol>
+      <li v-for="place in places">
+        <input type="checkbox" v-model="values" :value=place>{{place}}
+      </li>
+    </ol>
+    <!-- 配列の中身があるときのみ実行 -->
+    <div v-if="values.length > 0">
+      {{values}}
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        places: ["北海道", "東北", "関東", "東海", "甲信越", "中部", "近畿", "北陸", "中国・四国", "九州・沖縄"],
+        values: []
+      }
+    })
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 演習問題</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>入力した数値の四則検算</h2>
+  <div id="app">
+    <label>数値１ = <input type="number" v-model.number="number1"></label>
+    <br>
+    <label>数値２ = <input type="number" v-model.number="number2"></label>
+    <table border="1">
+      <tr>
+        <th>演算の種類</th>
+        <th>数値１</th>
+        <th>演算記号</th>
+        <th>数値２</th>
+        <th>演算結果</th>
+      </tr>
+      <tr v-for="(value,key) in op">
+        <td>{{value}}</td>
+        <td>{{number1}}</td>
+        <td>{{key}}</td>
+        <td>{{number2}}</td>
+        <td>{{calc(number1,number2,key)}}</td>
+      </tr>
+    </table>
+    <br>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        number1: 0,
+        number2: 0,
+        op: {
+          "+": "足し算",
+          "-": "ひき算",
+          "*": "かけ算",
+          "/": "わり算",
+          "%": "剰余"
+        }
+      },
+      methods: {
+        calc: function (num1, num2, op) {
+          switch (op) {
+            case "+":
+              result = num1 + num2;
+              break;
+            case "-":
+              result = num1 - num2;
+              break;
+            case "*":
+              result = num1 * num2;
+              break;
+            case "/":
+              result = num1 / num2;
+              break;
+            case "%":
+              result = num1 % num2;
+              break;
+          }
+          return result;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
