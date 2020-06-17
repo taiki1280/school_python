@@ -1,0 +1,13 @@
+@startuml 書籍
+class Book {
+  private $title; // 書名
+  private $author;  // 著者名
+  private $publisher;  // 出版社
+  private $isbn;  // ISBN
+  private $price; // 定価
+  
+  public __construct($title, $author, $publisher, $isbn, $price) // コンストラクタ
+  public bookInfoDisp() // 書籍情報を表示
+  public taxPrice($taxRate) // 税込み価格を表示
+}
+@enduml

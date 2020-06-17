@@ -1,0 +1,58 @@
+<?php
+// クラスファイルを読み込む
+// ＿＿＿（１）＿＿＿;
+require 'book.php';
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>効果測定</title>
+</head>
+
+<body>
+  <pre>
+<?php
+// インスタンス化
+// Bookクラスをインスタンス化
+// 書籍１
+// $book1 = ＿＿＿（５）＿＿＿("詳細! PHP 7+MySQL 入門ノート ", 
+$book1 = new Book(
+  "詳細! PHP 7+MySQL 入門ノート ",
+  "大重 美幸",
+  "ソーテック社",
+  "978-4800711304",
+  2980
+);
+// 書籍２
+// $book2 = ＿＿＿（６）＿＿＿("PHPフレームワークLaravel入門 第2版",
+$book2 = new Book(
+  "PHPフレームワークLaravel入門 第2版",
+  "掌田 津耶乃",
+  "秀和システム",
+  "978-4798060996",
+  3000
+);
+
+// メソッドを実行する
+// メソッド bookInfoDisp を呼び出し書籍情報を表示
+// 書籍１の情報を表示
+// ＿＿＿（７）＿＿＿;
+$book1->bookInfoDisp();
+// メソッド taxPrice を呼び出し１０％の消費税込み価格を表示
+// echo "税込み価格 = ", ＿＿＿（８）＿＿＿, "円", PHP_EOL;
+echo "税込み価格 = ", $book1->taxPrice(10), "円", PHP_EOL;
+echo PHP_EOL;
+// 書籍２の情報を表示
+// ＿＿＿（９）＿＿＿;
+$book2->bookInfoDisp();
+// メソッド taxPrice を呼び出し１０％の消費税込み価格を表示
+// echo "税込み価格 = ", ＿＿＿（10）＿＿＿, "円", PHP_EOL;
+echo "税込み価格 = ", $book2->taxPrice(10), "円", PHP_EOL;
+?>
+</pre>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+@startuml 継承おもちゃ
+class Toy {
+  protected $code  // 商品コード
+  protected $name  // 商品名
+  protected $price // 価格
+  
+  public __construct($code, $name ,$price)  // コンストラクタ
+  public productIntro() // 商品情報を表示
+  public go() // 走る
+}
+class CarToy {
+  protected $toyType // おもちゃの種類
+
+  public __construct($code, $name, $price, $toyType)  // コンストラクタ
+  public productIntro() // 商品情報を表示（オーバーライド）
+  public go() // 走る（オーバーライド）
+  public light()  // ライトをつける
+}
+class PatrolCarToy {
+  public __construct($code, $name, $price, $toyType)  // コンストラクタ
+  public go() // 走る（オーバーライド）
+  public siren()  // サイレンを鳴らす
+}
+class TrainToy {
+  protected $toyType // おもちゃの種類
+
+  public __construct($code, $name, $price, $toyType)  // コンストラクタ
+  public productIntro() // 商品情報を表示（オーバーライド）
+  public go() // 走る（オーバーライド）
+  public horn() // 警笛を鳴らす
+}
+Toy <|-- CarToy
+Toy <|-- TrainToy
+CarToy <|-- PatrolCarToy
+@enduml

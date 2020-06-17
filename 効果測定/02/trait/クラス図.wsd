@@ -1,0 +1,27 @@
+@startuml トレイト
+class Book {
+  private $title; // 書名
+  private $author;  // 著者名
+  private $publisher;  // 出版社
+  private $isbn;  // ISBN
+
+  public __construct($title, $author, $publisher, $isbn, $price) // コンストラクタ
+  public bookInfoDisp() // 書籍情報を表示
+}
+class DVD {
+  private $title; // 題名
+  private $director;  // 監督
+  private $distributor;  // 販売元
+  private $jan  // JAN
+
+  public __construct($title, $director, $distributor, $jan, $price)  // コンストラクタ
+  public DVDInfoDisp()  // DVD情報を表示
+}
+class TaxPriceCalc <<trait>> {
+  private $price // 定価
+
+  public function taxPrice($taxRate) // 税込み価格を計算し返す
+}
+Book -- TaxPriceCalc : < 取り込む
+DVD -- TaxPriceCalc : < 取り込む
+@enduml
