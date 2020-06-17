@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 演習問題</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>画像の表示をラジオボタンで切り換える例</h2>
+  <div id="app">
+    <h3>是非とも入社したい世界的IT企業</h3>
+    <ul>
+      <li><input type="radio" v-model="fileName" value="Yahoo.jpg">{{ Yahoo }}</li>
+      <li><input type="radio" v-model="fileName" value=Google.jpg>{{ Google }}</li>
+      <li><input type="radio" v-model="fileName" value=Microsoft.jpg>{{ Microsoft }}</li>
+    </ul>
+    <!-- <img ＿＿＿（１）＿＿＿></img> -->
+    <img :src="fileName"></img>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        fileName: '',
+        Yahoo: 'ヤフー',
+        Google: 'グーグル',
+        Microsoft: 'マイクロソフト'
+      }
+    })
+  </script>
+
+</body>
+
+</html>

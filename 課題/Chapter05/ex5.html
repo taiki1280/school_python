@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 演習問題</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>クリックしたら、四則演算する例</h2>
+  <div id="app">
+    <p>
+      数１ = <input v-model.number="number1"><br>
+      数２ = <input v-model.number="number2">
+    </p>
+    <input type="button" value="たし算" @click="calc('+')">
+    <input type="button" value="ひき算" @click="calc('-')">
+    <input type="button" value="かけ算" @click="calc('*')">
+    <input type="button" value="わり算" @click="calc('/')">
+    <input type="button" value="剰余" @click="calc('%')">
+    <hr>
+    <h3>計算結果</h3>
+    <p>{{ number1 }} {{ operator }} {{ number2 }} = {{ answer }}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        number1: 0,
+        number2: 0,
+        answer: 0,
+        operator: ''
+      },
+      methods: {
+        calc: function (op) {
+          switch (op) {
+            case "+":
+              this.answer = this.number1 + this.number2;
+              break;
+            case "-":
+              this.answer = this.number1 - this.number2;
+              break;
+            case "*":
+              this.answer = this.number1 * this.number2;
+              break;
+            case "/":
+              this.answer = this.number1 / this.number2;
+              break;
+            case "%":
+              this.answer = this.number1 % this.number2;
+              break;
+          }
+          this.operator = op
+          // this.operator = "+"
+          // answer = number1 + number2
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
