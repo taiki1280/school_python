@@ -1,11 +1,10 @@
 <?php
 // トレイトをしたいクラスの読み込み
  require_once("teacher.php");
- require_once("cock.php");
 
 /* Personクラスの定義 */
 class Person {
-    use teacher,cock;
+    use teacher;
     private $name;  // 氏名
     private $job;   // 職種
 
@@ -24,5 +23,3 @@ class Person {
         echo "職種：", $this->job,"<br>",PHP_EOL;
     }
 }
-
-?>
