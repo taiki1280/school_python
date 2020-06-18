@@ -22,11 +22,11 @@ func (number1 myInt) mul(number2 myInt) myInt {
 }
 
 // わり算 div メソッドの定義
-func (number1 myInt) div(number2 myInt) myInt {
-	return number1 / number2
+func (number1 myInt) div(number2 myInt) float64 {
+	return float64(number1) / float64(number2)
 }
-func (number1 myInt) div(number2 myInt) myInt {
-	return number1 * number2
+func (number1 myInt) mod(number2 myInt) myInt {
+	return number1 % number2
 }
 
 // 剰余 mod メソッドの定義
@@ -45,10 +45,14 @@ func main() {
 	fmt.Printf("%d + %d = %d\n", number1, number2, number1.add(number2))
 	// ひき算
 	// fmt.Printf("%d - %d = %d\n", number1, number2, ＿＿＿（３）＿＿＿)
+	fmt.Printf("%d + %d = %d\n", number1, number2, number1.sub(number2))
 	// // かけ算
 	// fmt.Printf("%d * %d = %d\n", number1, number2, ＿＿＿（４）＿＿＿)
+	fmt.Printf("%d + %d = %d\n", number1, number2, number1.mul(number2))
 	// // わり算
 	// fmt.Printf("%d / %d = %f\n", number1, number2, ＿＿＿（５）＿＿＿)
+	fmt.Printf("%d + %d = %f\n", number1, number2, number1.div(number2))
 	// // 剰余
 	// fmt.Printf("%d %% %d = %d\n", number1, number2, ＿＿＿（６）＿＿＿)
+	fmt.Printf("%d + %d = %d\n", number1, number2, number1.mod(number2))
 }
