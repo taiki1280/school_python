@@ -1,30 +1,22 @@
-<?php
-require_once("../../lib/util.php");
-// データベースユーザ
-$user = 'root';
-$password = '';
-// 利用するデータベース
-$dbName = 'testdb';
-// MySQLサーバ
-$host = 'localhost';
-// MySQLのDSN文字列
-$dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
   <meta charset="utf-8">
-  <title>レコードを取り出す（BETWEEN、ORDER ）</title>
-  <link href="../../css/style.css" rel="stylesheet">
-  <!-- テーブル用のスタイルシート -->
-  <link href="../../css/tablestyle.css" rel="stylesheet">
+  <title>レコードを取り出す（すべて）</title>
+  <link href="style.css" rel="stylesheet">
+  <link href="tablestyle.css" rel="stylesheet">
 </head>
 
 <body>
   <div>
     <?php
+    require_once("util.php");
+    $user = 'root';
+    $password = '';
+    $dbName = 'jissyu';
+    $host = 'localhost';
+    $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
     //MySQLデータベースに接続する
     try {
       $pdo = new PDO($dsn, $user, $password);
@@ -33,21 +25,24 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
       // 例外がスローされる設定にする
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       echo "データベース{$dbName}に接続しました。", "<br>";
-      // SQL文を作る（20代、年齢昇順ソート）
-      $sql = "SELECT * FROM member WHERE age >= 20 AND age < 30 ORDER BY age";
+      // SQL文を作る（全レコード）
+      $sql = "SELECT * FROM users";
       // プリペアドステートメントを作る
       $stm = $pdo->prepare($sql);
       // SQL文を実行する
       $stm->execute();
-      // 結果の取得（連想配列で受け取る）
+      // 結果の取得（連想配列で返す）
       $result = $stm->fetchAll(PDO::FETCH_ASSOC);
       // テーブルのタイトル行
       echo "<table>";
       echo "<thead><tr>";
-      echo "<th>", "ID", "</th>";
+      echo "<th>", "ユーザID", "</th>";
       echo "<th>", "名前", "</th>";
-      echo "<th>", "年齢", "</th>";
-      echo "<th>", "性別", "</th>";
+      echo "<th>", "メールアドレス", "</th>";
+      echo "<th>", "パスワード", "</th>";
+      echo "<th>", "登録日時", "</th>";
+      echo "<th>", "変更日時", "</th>";
+      echo "<th>", "削除済み", "</th>";
       echo "</tr></thead>";
       // 値を取り出して行に表示する
       echo "<tbody>";
@@ -56,8 +51,11 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
         echo "<tr>";
         echo "<td>", es($row['id']), "</td>";
         echo "<td>", es($row['name']), "</td>";
-        echo "<td>", es($row['age']), "</td>";
-        echo "<td>", es($row['sex']), "</td>";
+        echo "<td>", es($row['email']), "</td>";
+        echo "<td>", es($row['password']), "</td>";
+        echo "<td>", es($row['created_at']), "</td>";
+        echo "<td>", es($row['updated_at']), "</td>";
+        echo "<td>", es($row['delete_flg']), "</td>";
         echo "</tr>";
       }
       echo "</tbody>";
