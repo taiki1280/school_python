@@ -16,9 +16,7 @@
   $name = $_POST["name"];
   $product_name = $_POST["product_name"];
   $num = $_POST["num"];
-  // echo $name, nl2br("\n");
-  // echo $product_name, nl2br("\n");
-  // echo $num, nl2br("\n");
+
   require_once "util.php";
   $user = 'root';
   $password = '';
@@ -32,14 +30,48 @@
     // 例外がスローされる設定にする
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "データベース{$dbName}に接続しました。", "<br>";
-    var_dump($name_list);
-    var_dump($product_name_list);
+
+    // 必要なデータを取る
+    // 選択された商品のIDと値段
+    $sql = "SELECT * FROM products WHERE name LIKE :product_name";
+    $stm = $pdo->prepare($sql);
+    $stm->bindValue(':product_name', $product_name, PDO::PARAM_STR);
+    $stm->execute();
+    $products = $stm->fetchAll(PDO::FETCH_ASSOC)[0];
+    $product_price = $products["price"];
+    $product_id = $products["id"];
+
+    // ユーザーのID
+    $sql = "SELECT * FROM users WHERE name LIKE :name";
+    $stm = $pdo->prepare($sql);
+    $stm->bindValue(':name', $name, PDO::PARAM_STR);
+    $stm->execute();
+    $user_id = $stm->fetchAll(PDO::FETCH_ASSOC)[0]["id"];
+
+    // purchase_history
+    $sql = "SELECT * FROM purchase_history";
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
+    $purchase_history = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $purchase_history_id =  count($purchase_history);
+
+    echo "purchase_historyテーブルに追加するもの<br>";
+    echo "user_id：", $user_id, "<br>";
+    echo "total：", $product_price * $num, "<br>";
+    echo "<br>";
+    echo "purchase_history_detailsテーブルに追加するもの<br>";
+    echo "product_id：", $product_id, "<br>";
+    echo "quantity：", $num, "<br>";
+    echo "purchase_history_id：", $purchase_history_id + 1, "<br>";
     // 入力データを追加する
-    // $sql = "INSERT INTO purchase_history (user_id, total_price) VALUES($name, 3000);";
+    // purchase_history
+    // $sql = "INSERT INTO purchase_history (user_id, total_price) VALUES($user_id, $product_price * $num);";
     // $stm = $pdo->prepare($sql);
     // $stm->execute();
-
-
+    // purchase_history_details
+    $sql = "INSERT INTO purchase_history_details (id, quantity, purchase_id) VALUES($product_id, $num,$purchase_history_id + 1);";
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
 
     // テーブルを表示する
     $sql = "SELECT purchase_history.id,users.name,products.name AS product_name, price,purchase_history_details.quantity, order_date FROM users,products,purchase_history,purchase_history_details WHERE users.id = purchase_history.user_id AND purchase_history.id = purchase_history_details.purchase_id AND products.id = purchase_history_details.products_id";
