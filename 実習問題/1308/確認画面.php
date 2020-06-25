@@ -53,7 +53,7 @@
     $stm = $pdo->prepare($sql);
     $stm->execute();
     $purchase_history = $stm->fetchAll(PDO::FETCH_ASSOC);
-    $purchase_history_id =  count($purchase_history);
+    $purchase_history_id =  count($purchase_history) + 1;
 
     echo "purchase_historyテーブルに追加するもの<br>";
     echo "user_id：", $user_id, "<br>";
@@ -62,19 +62,19 @@
     echo "purchase_history_detailsテーブルに追加するもの<br>";
     echo "product_id：", $product_id, "<br>";
     echo "quantity：", $num, "<br>";
-    echo "purchase_history_id：", $purchase_history_id + 1, "<br>";
+    echo "purchase_history_id：", $purchase_history_id, "<br>";
     // 入力データを追加する
     // purchase_history
-    // $sql = "INSERT INTO purchase_history (user_id, total_price) VALUES($user_id, $product_price * $num);";
-    // $stm = $pdo->prepare($sql);
-    // $stm->execute();
+    $sql = "INSERT INTO purchase_history (user_id, total_price) VALUES($user_id, $product_price * $num);";
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
     // purchase_history_details
-    $sql = "INSERT INTO purchase_history_details (id, quantity, purchase_id) VALUES($product_id, $num,$purchase_history_id + 1);";
+    $sql = "INSERT INTO purchase_history_details (purchase_id, products_id, quantity) VALUES($purchase_history_id, $product_id,$num);";
     $stm = $pdo->prepare($sql);
     $stm->execute();
 
     // テーブルを表示する
-    $sql = "SELECT purchase_history.id,users.name,products.name AS product_name, price,purchase_history_details.quantity, order_date FROM users,products,purchase_history,purchase_history_details WHERE users.id = purchase_history.user_id AND purchase_history.id = purchase_history_details.purchase_id AND products.id = purchase_history_details.products_id";
+    $sql = "SELECT purchase_history.id,users.name,products.name AS product_name, price,purchase_history_details.quantity, order_date FROM users,products,purchase_history,purchase_history_details WHERE users.id = purchase_history.user_id AND purchase_history.id = purchase_history_details.purchase_id AND products.id = purchase_history_details.products_id ORDER BY purchase_history.id";
     $stm = $pdo->prepare($sql);
     $stm->execute();
     $result = $stm->fetchAll(PDO::FETCH_ASSOC);
