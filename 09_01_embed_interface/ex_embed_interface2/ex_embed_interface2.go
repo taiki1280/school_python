@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /**
 インタフェース型 Add の定義
@@ -67,6 +69,7 @@ type Calculate interface {
 	Mul
 	Div
 	Mod
+	dispCalc(op string) string
 }
 
 /**
@@ -106,6 +109,11 @@ func (x CalcData) mod() int {
 	return x.number1 % x.number2
 }
 
+func (x CalcData) dispCalc(op string) string {
+	return fmt.Sprintf("%d %s %d = ", x.number1, op, x.number2)
+	// return strconv.Itoa(x.number1) + op + strconv.Itoa(x.number2) + "="
+}
+
 func main() {
 
 	var data CalcData
@@ -120,20 +128,11 @@ func main() {
 
 	// たし算の結果を表示
 	calc = data
-	// fmt.Print(data.number1)
-	// fmt.Print(calc.add())
-	// fmt.Printf("%d + %d = %d\n", ＿＿（１）＿＿, ＿＿（２）＿＿, ＿＿（３）＿＿)
-	fmt.Printf("%d + %d = %d\n", data.number1, data.number2, calc.add())
-	// ひき算の結果を表示
-	// fmt.Printf("%d - %d = %d\n", ＿＿（１）＿＿, ＿＿（２）＿＿, ＿＿（４）＿＿)
-	fmt.Printf("%d - %d = %d\n", data.number1, data.number2, calc.sub())
-	// // かけ算の結果を表示
-	// fmt.Printf("%d * %d = %d\n", ＿＿（１）＿＿, ＿＿（２）＿＿, ＿＿（５）＿＿)
-	fmt.Printf("%d * %d = %d\n", data.number1, data.number2, calc.mul())
-	// // わり算の結果を表示
-	// fmt.Printf("%d / %d = %f\n", ＿＿（１）＿＿, ＿＿（２）＿＿, ＿＿（６）＿＿)
-	fmt.Printf("%d / %d = %f\n", data.number1, data.number2, calc.div())
-	// // 剰余算の結果を表示
-	// fmt.Printf("%d %% %d = %d\n", ＿＿（１）＿＿, ＿＿（２）＿＿, ＿＿（７）＿＿)
-	fmt.Printf("%d %% %d = %d\n", data.number1, data.number2, calc.mod())
+
+	fmt.Println(calc.dispCalc("+"), calc.add())
+	fmt.Println(calc.dispCalc("-"), calc.sub())
+	fmt.Println(calc.dispCalc("*"), calc.mul())
+	fmt.Println(calc.dispCalc("/"), calc.div())
+	fmt.Println(calc.dispCalc("%"), calc.mod())
+
 }
