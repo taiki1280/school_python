@@ -1,0 +1,16 @@
+@startuml カート_商品を表示する
+actor ユーザ
+
+ユーザ -> cart_show.php:メニューのお気に入りリンクを押す
+
+cart_show.php -> menu.php:メニュー読み込み
+cart_show.php <-- menu.php:
+
+cart_show.php -> cart.php:カートに入っている商品を表示する
+alt カートに商品が入っている場合
+cart.php -> cart.php:カートに入っている商品を表示する
+
+else カートに商品が入っていない場合
+cart.php -> cart.php:カートに商品が入っていないメッセージを流す
+end
+@enduml

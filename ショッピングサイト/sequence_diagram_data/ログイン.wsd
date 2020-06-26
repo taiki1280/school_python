@@ -1,0 +1,18 @@
+@startuml ログイン
+actor ユーザ
+ユーザ -> login_input.php:ログインのリンクを押す
+
+login_input.php -> menu.php:メニュー読み込み 
+login_input.php <-- menu.php: 
+
+ユーザ -> login_input.php:ログインボタンを押す
+login_input.php -> login_output.php:POST送信
+menu.php <- login_output.php:メニュー読み込み
+menu.php --> login_output.php:
+
+login_output.php -> db_connect.php:データベース読み込み 
+login_output.php <-- db_connect.php: 
+
+login_output.php -> login_output.php:ログイン処理
+login_output.php -> login_output.php:セッション登録処理
+@enduml

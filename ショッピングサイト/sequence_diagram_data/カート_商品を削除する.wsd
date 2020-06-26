@@ -1,0 +1,20 @@
+@startuml カート_商品を削除する
+actor ユーザ
+
+ユーザ -> cart_show.php:カートのリンクを押す
+
+cart_show.php -> menu.php:メニュー読み込み
+cart_show.php <-- menu.php:
+
+cart_show.php -> cart.php:カートに入っている商品を表示する
+cart_show.php <-- cart.php:
+
+ユーザ -> cart_show.php:削除のリンクを押す
+cart_show.php -> cart_delete.php:GET送信/cart_delete.php?id=商品ID
+
+cart_delete.php -> menu.php:メニュー読み込み
+cart_delete.php <-- menu.php:
+
+cart_delete.php -> cart_delete.php:セッション情報を削除する
+
+@enduml

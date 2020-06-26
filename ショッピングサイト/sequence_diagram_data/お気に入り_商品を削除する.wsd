@@ -1,0 +1,20 @@
+@startuml お気に入り_商品を削除する
+actor ユーザ
+
+ユーザ -> favorite.php:削除のリンクを押す
+favorite.php -> favorite_delete.php:GET送信/favorite_delete.php?id=商品id
+
+favorite_delete.php -> menu.php:メニュー読み込み
+favorite_delete.php <-- menu.php:
+
+alt ログインしている場合
+favorite_delete.php -> db_connect.php:デー-タベース読み込み
+favorite_delete.php <-- db_connect.php:
+
+favorite_delete.php -> favorite_delete.php:お気に入りに追加されている商品を削除する
+
+else ログインしていない場合
+favorite_delete.php -> favorite_delete.php:ログインをするようメッセージを促す
+
+end
+@enduml

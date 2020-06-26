@@ -1,0 +1,20 @@
+@startuml 商品_詳細を表示する
+actor ユーザ
+
+ユーザ -> product.php:商品名のリンクを押す
+product.php -> detail.php:GET送信/detail.php?id=商品id
+
+detail.php -> menu.php:メニュー読み込み
+detail.php <-- menu.php:
+
+detail.php -> db_connect.php:データベース読み込み 
+detail.php <-- db_connect.php: 
+
+detail.php -> detail.php:商品詳細を取出す処理
+
+ユーザ -> detail.php:カートに追加ボタンを押す
+detail.php -> cart_insert.php:POST送信
+
+ユーザ -> detail.php:お気に入りに追加のリンクを押す
+detail.php -> favorite_insert.php:GET送信/favorite_insert.php?id=商品id
+@enduml

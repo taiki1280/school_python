@@ -1,0 +1,17 @@
+@startuml 会員登録
+actor ユーザ
+ユーザ -> customer_input.php:会員登録のリンクを押す
+
+customer_input.php -> menu.php:メニュー読み込み 
+customer_input.php <-- menu.php: 
+
+ユーザ -> customer_input.php:確定ボタンを押す
+customer_input.php -> customer_output.php:POST送信
+menu.php <- customer_output.php:メニュー読み込み
+menu.php --> customer_output.php:
+
+customer_output.php -> db_connect.php:データベース読み込み 
+customer_output.php <-- db_connect.php: 
+
+customer_output.php -> customer_output.php:会員登録処理
+@enduml

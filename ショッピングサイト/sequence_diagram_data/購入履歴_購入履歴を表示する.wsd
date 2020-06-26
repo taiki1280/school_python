@@ -1,0 +1,21 @@
+@startuml 購入履歴_購入履歴を表示する
+actor ユーザ
+
+ユーザ -> history.php:メニューのお気に入りリンクを押す
+
+history.php -> menu.php:メニュー読み込み
+history.php <-- menu.php:
+
+alt ログインしている場合
+history.php -> db_connect.php:デー-タベース読み込み
+history.php <-- db_connect.php:
+
+history.php -> history.php:購入履歴を表示する
+ユーザ -> history.php:商品名のリンクを押す
+history.php -> detail.php:GET送信/detail.php?id=商品id
+else ログインしていない場合
+history.php -> history.php:ログインをするようメッセージを促す
+
+
+end
+@enduml

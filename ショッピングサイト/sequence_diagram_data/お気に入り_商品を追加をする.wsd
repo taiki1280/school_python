@@ -1,0 +1,36 @@
+@startuml お気に入り_商品を追加をする
+actor ユーザ
+
+ユーザ -> product.php:商品名のリンクを押す
+product.php -> detail.php:GET送信/detail.php?id=商品id
+
+
+detail.php -> db_connect.php:データベース読み込み 
+detail.php <-- db_connect.php: 
+
+detail.php -> detail.php:商品詳細を取出す処理
+
+ユーザ -> detail.php:お気に入りに追加のリンクを押す
+detail.php -> favorite_insert.php:GET送信/detail.php?id=商品id
+
+favorite_insert.php -> menu.php:メニュー読み込み
+favorite_insert.php <-- menu.php:
+
+favorite_insert.php -> favorite_insert.php:ログインの判断
+alt ログインしている場合
+favorite_insert.php -> db_connect.php:データベース読み込み 
+favorite_insert.php <-- db_connect.php: 
+
+favorite_insert.php -> favorite_insert.php:データベースへお気に入り追加処理
+
+favorite_insert.php -> favorite.php:お気に入りに追加されている商品を表示する
+favorite.php -> db_connect.php:デー-タベース読み込み
+favorite.php <-- db_connect.php:
+
+favorite.php -> favorite.php:お気に入りに追加されている商品を取り出す
+favorite_insert.php <-- favorite.php:
+
+else ログインしていない場合
+favorite_insert.php -> favorite_insert.php:ログインをするようメッセージを促す
+end
+@enduml

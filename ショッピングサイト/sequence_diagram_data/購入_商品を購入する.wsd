@@ -1,0 +1,43 @@
+@startuml 購入_商品を購入する
+actor ユーザ
+
+ユーザ -> purchase_input.php:メニューの購入のリンクを押す
+
+purchase_input.php -> menu.php:メニュー読み込み
+purchase_input.php <-- menu.php:
+
+alt ログインをしている場合
+
+alt カートに商品がある場合
+
+purchase_input.php -> purchase_input.php:名前と住所を出力する
+purchase_input.php -> cart.php:カートの商品を表示する
+alt カートに商品がある場合
+cart.php -> cart.php:カートに入っている商品を表示する
+
+else カートに商品がない場合
+cart.php -> cart.php:カートに商品がない旨を伝える
+else カートに商品が無い場合
+purchase_input.php -> purchase_input.php:カートに商品がない旨を伝える
+end
+
+else ログインをしていない場合
+purchase_input.php -> purchase_input.php:ログインする旨を伝える
+end
+
+ユーザ -> purchase_input.php:商品名のリンクを押す
+purchase_input.php -> detail.php:GET送信/detail.php?id=商品id
+ユーザ -> purchase_input.php:削除のリンクを押す
+purchase_input.php -> cart_delete.php:GET送信/cart_delete.php?id=商品id
+ユーザ -> purchase_input.php:購入を確定するのリンクを押す
+purchase_input.php -> purchase_output.php:画面遷移
+
+purchase_output.php -> menu.php:メニュー読み込み
+purchase_output.php <-- menu.php:
+
+purchase_output.php -> db_connect.php:データベース読み込み
+purchase_output.php <-- db_connect.php:
+
+purchase_output.php -> purchase_output.php:データベースへ登録
+
+@enduml

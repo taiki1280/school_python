@@ -1,0 +1,23 @@
+@startuml 商品_一覧表示をする_検索する
+actor ユーザ
+
+ユーザ -> product.php:商品一覧画面を開く
+loop
+product.php -> menu.php:メニュー読み込み 
+product.php <-- menu.php: 
+
+product.php -> db_connect.php:データベース読み込み 
+product.php <-- db_connect.php: 
+
+alt 検索表示の場合
+product.php -> product.php:商品検索処理
+else 一覧表示の場合
+product.php -> product.php:商品一覧処理
+end
+ユーザ -> product.php:検索ボタンを押す
+product.php -> product.php:POST送信
+end
+ユーザ -> product.php:商品名のリンクを押す
+product.php -> detail.php:GET送信/detail.php?id=商品id
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml カート_商品を追加する
+actor ユーザ
+
+ユーザ -> product.php:商品名のリンクを押す
+product.php -> detail.php:GET送信/detail.php?id=商品id
+
+
+detail.php -> db_connect.php:データベース読み込み 
+detail.php <-- db_connect.php: 
+
+detail.php -> detail.php:商品詳細を取出す処理
+
+ユーザ -> detail.php:カートに追加ボタンを押す
+detail.php -> cart_insert.php:POST送信
+
+cart_insert.php -> menu.php:メニュー読み込み
+cart_insert.php <-- menu.php:
+
+cart_insert.php -> cart_insert.php:セッションに追加をする
+
+cart_insert.php -> cart.php:カートに入っている商品を表示する
+cart_insert.php <-- cart.php:
+@enduml

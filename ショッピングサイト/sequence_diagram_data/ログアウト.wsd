@@ -1,0 +1,14 @@
+@startuml ログアウト
+actor ユーザ
+ユーザ -> logout_input.php:ログアウトのリンクを押す
+
+logout_input.php -> menu.php:メニュー読み込み 
+logout_input.php <-- menu.php: 
+
+ユーザ -> logout_input.php:ログアウトボタンを押す
+logout_input.php -> logout_output.php:画面遷移
+menu.php <- logout_output.php:メニュー読み込み
+menu.php --> logout_output.php:
+
+logout_output.php -> logout_output.php:セッション解除処理
+@enduml

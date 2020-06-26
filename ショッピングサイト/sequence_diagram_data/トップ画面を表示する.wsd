@@ -1,0 +1,8 @@
+@startuml トップ画面を表示する
+actor ユーザ
+ユーザ -> index.php:URLを開く
+
+customer_input.php -> menu.php:メニュー読み込み 
+customer_input.php <-- menu.php: 
+
+@enduml
