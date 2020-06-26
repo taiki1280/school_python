@@ -11,7 +11,21 @@
 
 <body>
   <?php
-  // if (isset($_POST["name"]))
+  $errors = [];
+  if (!isset($_POST["num"]) || ($_POST["num"] === "")) {
+    $errors[] = "個数が空です。";
+  }
+  if (count($errors) > 0) {
+    echo '<ul class="error">';
+    foreach ($errors as $key => $value) {
+      echo "<li> エラー", $key + 1, "番目：", $value, "</li>";
+    }
+    echo "</ul>";
+    echo "<hr>";
+    echo "<a href=入力画面.php>戻る</a>";
+    exit();
+  }
+
   // 正しい値以外は入らないようになっているので判定は不要
   $name = $_POST["name"];
   $product_name = $_POST["product_name"];
@@ -25,6 +39,7 @@
   $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
   try {
     $pdo = new PDO($dsn, $user, $password);
+    $pdo->beginTransaction();
     // プリペアドステートメントのエミュレーションを無効にする
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     // 例外がスローされる設定にする
@@ -53,7 +68,7 @@
     $stm = $pdo->prepare($sql);
     $stm->execute();
     $purchase_history = $stm->fetchAll(PDO::FETCH_ASSOC);
-    $purchase_history_id =  count($purchase_history) + 1;
+    $purchase_history_id = count($purchase_history) + 1;
 
     echo "purchase_historyテーブルに追加するもの<br>";
     echo "user_id：", $user_id, "<br>";
@@ -78,7 +93,9 @@
     $stm = $pdo->prepare($sql);
     $stm->execute();
     $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $pdo->commit();
   } catch (Exception $e) {
+    $pdo->rollBack();
     echo '<span class="error">エラーがありました。</span><br>';
     echo $e->getMessage();
     exit();
