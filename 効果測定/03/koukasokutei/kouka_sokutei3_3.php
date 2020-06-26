@@ -1,4 +1,4 @@
-/*
+<!-- /*
 今回のプログラムは、データベースinventoryの
 テーブルgoodsに対して、フォームからレコードを追加するものです。
 問題の実行結果となるように
@@ -7,7 +7,7 @@
 入力フォーム：kouka_sokutei3_3.php
 レコード追加プログラム；insert_goods.php
 とします。
-*/
+*/ -->
 
 <?php
 require_once("util.php");

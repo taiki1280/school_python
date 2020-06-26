@@ -1,4 +1,4 @@
-/*
+<!-- /*
 今回のプログラムは、データベースinventoryの
 テーブルgoodsに対して、ブランド名で検索することにより、
 該当レコードを検索して表示するものです。
@@ -8,7 +8,7 @@
 入力フォーム：kouka_sokutei3_2.php
 検索プログラム：select_goods.php
 とします。
-*/
+*/ -->
 
 <?php
 require_once("util.php");
