@@ -1,8 +1,0 @@
-def kansuu():
-    return "a"
-
-a = [[],[2]]
-a[0].append([kansuu()])
-
-print(a)
-
