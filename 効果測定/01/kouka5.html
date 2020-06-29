@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>効果測定</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>お小遣い残金</h2>
+  <div id="app">
+    <p>お小遣い残金＝{{ balance }}円</p>
+    <!-- <button ___(1)___:click="reduce(1000)">千円使う</button> -->
+    <button v-on:click="reduce(1000)">千円使う</button>
+    <!-- <button ___(1)___:click="reduce(5000)">五千円使う</button> -->
+    <button v-on:click="reduce(5000)">五千円使う</button>
+    <!-- <button ___(1)___:click="reduce(10000)">一万円使う</button> -->
+    <button v-on:click="reduce(10000)">一万円使う</button>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        balance: 30000
+      },
+      // ___(2)___: {
+      methods: {
+        // ___(3)___: ___(4)___ {
+        reduce: function (value) {
+          this.balance -= value;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>効果測定</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>四則演算</h2>
+  <div id="app">
+    <p>数１＝
+      <!-- <input type="number" ___(1)___="number1"> -->
+      <input type="number" v-model="number1">
+    </p>
+    <p>数２＝
+      <!-- <input type="number" ___(1)___="number2"> -->
+      <input type="number" v-model="number2">
+    </p>
+    <P>演算<br>
+      <!-- <button ___(2)___:click="add()">＋</button> -->
+      <button v-on:click="add()">＋</button>
+      <!-- <button ___(2)___:click="sub()">ー</button> -->
+      <button v-on:click="sub()">ー</button>
+      <!-- <button ___(2)___:click="mul()">＊</button> -->
+      <button v-on:click="mul()">＊</button>
+      <!-- <button ___(2)___:click="div()">／</button> -->
+      <button v-on:click="div()">／</button>
+      <!-- <button ___(2)___:click="mod()">％</button> -->
+      <button v-on:click="mod()">％</button>
+    </P>
+    <p>
+      計算結果<br>
+      {{ number1 }} {{ operator }} {{ number2 }} = {{ result }}
+    </p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        number1: 0,
+        number2: 0,
+        result: 0,
+        // ___(3)___: ' ＋ '
+        operator: ' ＋ '
+      },
+      // ___(4)___: {
+      methods: {
+        // ___(5)___: function () {
+        add: function () {
+          this.operator = ' ＋ ';
+          this.result
+            = parseInt(this.number1) + parseInt(this.number2);
+        },
+        // ___(6)___: function () {
+        sub: function () {
+          this.operator = ' ー ';
+          this.result = this.number1 - this.number2;
+        },
+        // ___(7)___: function () {
+        mul: function () {
+          this.operator = ' ＊ ';
+          this.result = this.number1 * this.number2;
+        },
+        // ___(8)___: function () {
+        div: function () {
+          this.operator = ' ／ ';
+          this.result = this.number1 / this.number2;
+        },
+        // ___(9)___: function () {
+        mod: function () {
+          this.operator = ' ％ ';
+          this.result = this.number1 % this.number2;
+        },
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>効果測定</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>リンクを指定する例</h2>
+  <div id="app">
+    <p>各種検索サイトリンク
+    <ul>
+      <li>
+        <!-- <a ___(1)___:href="googleURL">Google</a> -->
+        <a v-bind:href="googleURL">Google</a>
+      </li>
+      <li>
+        <!-- <a ___(1)___:href="yahooURL">Yahoo</a> -->
+        <a v-bind:href="yahooURL">Yahoo</a>
+      </li>
+      <li>
+        <!-- <a ___(1)___:href="msnURL">MSN</a> -->
+        <a v-bind:href="msnURL">MSN</a>
+      </li>
+    </ul>
+    </p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        // ___(2)___: 'https://www.google.com',
+        googleURL: 'https://www.google.com',
+        // ___(3)___: 'https://www.yahoo.co.jp',
+        yahooURL: 'https://www.yahoo.co.jp',
+        // ___(4)___: 'https://www.msn.com/ja-jp'
+        msnURL: 'https://www.msn.com/ja-jp'
+      }
+    })
+  </script>
+</body>
+
+</html>
