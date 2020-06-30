@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js 演習問題</title>
+  <link href="main.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>単価と個数を入力したら、税込み金額を計算する例</h2>
+    <input type="number" v-model.number="price">円×<input type="number" v-model.number="num">個
+    <p>　　　合計 {{ TotalPrice }}円です。</p>
+    <p>税込み価格 {{ taxPrice }}円です。</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        price: 300,
+        num: 4
+      },
+      computed: {
+        TotalPrice: function () {
+          return this.price * this.num
+        },
+        taxPrice: function () {
+          return this.price * this.num * 1.08
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
