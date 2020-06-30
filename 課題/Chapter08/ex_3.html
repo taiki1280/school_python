@@ -11,10 +11,11 @@
 
 <body>
   <div id="app">
-    <h2>単価と個数を入力したら、税込み金額を計算する例</h2>
-    <input type="number" v-model.number="price">円×<input type="number" v-model.number="num">個
-    消費税率<input type="number" v-model.number="tax">%
-    <p>　　　合計 {{ TotalPrice }}円です。</p>
+    <h2>消費税込み価格計算</h2>
+    定価：<input type="number" v-model.number="price">円×<input type="number" v-model.number="num">個
+    <br>
+    消費税率：<input type="number" v-model.number="tax">%
+    <!-- <p>　　　合計 {{ TotalPrice }}円です。</p> -->
     <p>税込み価格 {{ taxPrice }}円です。</p>
   </div>
 
