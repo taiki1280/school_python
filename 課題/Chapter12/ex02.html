@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue.js 演習問題</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+
+</head>
+
+<body>
+  <h2>コンポーネントを作って表示する例</h2>
+  <div id="app">
+    <ul>
+      各国のあいさつ
+      <greeting-jp></greeting-jp>
+      <greeting-en></greeting-en>
+      <greeting-fr></greeting-fr>
+    </ul>
+  </div>
+
+  <script>
+    // var ＿＿＿（１）＿＿＿ = {
+    var GreetingJP = {
+      // ＿＿＿（２）＿＿＿: '<p class="my-comp">こんにちは！！</p>'
+      template: '<div><li>日本</li><p class="my-comp">こんにちは！！</p><div>'
+    }
+    // var ＿＿＿（３）＿＿＿ = {
+    var GreetingEN = {
+      // ＿＿＿（２）＿＿＿: '<p class="my-comp">Hello!!</p>'
+      template: '<div><li>アメリカ</li><p class="my-comp">Hello!!</p></div>'
+    }
+    // var ＿＿＿（４）＿＿＿ = {
+    var GreetingFR = {
+      // ＿＿＿（２）＿＿＿: '<p class="my-comp">Bonjour!!</p>'
+      template: '<div><li>フランス</li><p class="my-comp">Bonjour!!</div>'
+    }
+    new Vue({
+      el: '#app',
+      // ＿＿＿（５）＿＿＿: {
+      components: {
+        'greeting-jp': GreetingJP,
+        'greeting-en': GreetingEN,
+        'greeting-fr': GreetingFR
+      }
+    })
+  </script>
+
+  <style>
+    .my-comp {
+      width: 300px;
+      background-color: #ffffe0;
+      border: solid;
+      border-color: darkorange;
+      border-radius: 8px;
+      padding: 8px;
+    }
+  </style>
+</body>
+
+</html>
