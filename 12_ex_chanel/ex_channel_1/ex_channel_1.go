@@ -17,6 +17,7 @@ s：送信チャンネル（型 chan<- int）
 func sendEven(limit int, s chan<- int) {
 	for i := 0; i <= limit; i++ {
 		if i%2 == 0 {
+			s <- i
 		}
 	}
 	close(s)
