@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue.js 演習問題</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+
+</head>
+
+<body>
+  <h2>配列からコンポーネントを作って表示する例</h2>
+  <div id="app">
+    <prefecture v-for="value in prefectures" :value="value.name"></prefecture>
+  </div>
+
+  <script>
+    var PrefectureData = {
+      template: `
+      <p class="my-comp">県名：{{value}}</p>
+      `,
+      props: {
+        value: String
+      }
+    }
+    new Vue({
+      el: '#app',
+      components: {
+        prefecture: PrefectureData
+      },
+      data: {
+        prefectures: [
+          { name: "青森県" },
+          { name: "岩手県" },
+          { name: "秋田県" },
+          { name: "宮城県" },
+          { name: "山形県" },
+          { name: "福島県" },
+        ]
+      }
+    })
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+    .my-comp {
+      width: 300px;
+      background-color: #ffffe0;
+      border: solid;
+      border-color: darkorange;
+      border-radius: 8px;
+      padding: 8px;
+    }
+  </style>
+
+</body>
+
+</html>
