@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>効果測定</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>ボタンを押してリストが増減するとき、アニメーションする例</h2>
+  <div id="app">
+    <ol>
+      <transition-group>
+        <li v-for="value in cityList" :key="value">{{value}}</li>
+      </transition-group>
+    </ol>
+    <p>
+      <label>都市名：
+        <!-- ＿＿＿＿＿（１）＿＿＿＿＿ -->
+        <input type="text" v-model="addItem">
+      </label>
+      <!-- ＿＿＿＿＿（２）＿＿＿＿＿ -->
+      <input type="button" value="追加" @click="add_one()">
+    </p>
+    <p>
+      <label>番号：
+        <!-- ＿＿＿＿＿（３）＿＿＿＿＿ -->
+        <input type="number" v-model="removeNumber">
+      </label>
+      <!-- ＿＿＿＿＿（４）＿＿＿＿＿ -->
+      <input type="button" value="削除" @click="remove_one()">
+    </p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        cityList: ['札幌市', '青森市', '仙台市'],
+        addItem: '',
+        removeNumber: 1
+      },
+      methods: {
+        add_one() {
+          this.cityList.push(this.addItem);
+        },
+        remove_one() {
+          this.cityList.splice(this.removeNumber - 1, 1);
+        }
+      }
+    })
+  </script>
+
+  <style>
+    .v-enter-active,
+    .v-leave-active {
+      animation: .5s ease-in 0s infinite alternate forwards running size-up-normal
+        /* animation-name: size-up-normal;
+      animation-iteration-count: infinite; */
+        /* animation-duration: 1s; */
+    }
+
+    /* .v-enter,
+    .v-leave-to {
+      font-size: 200%;
+      transition: .25s;
+    } */
+
+    @keyframes size-up-normal {
+      0% {
+        font-size: 100%;
+      }
+
+      50% {
+        font-size: 200%;
+      }
+
+      100% {
+        font-size: 100%;
+      }
+    }
+  </style>
+</body>
+
+</html>
