@@ -1,0 +1,88 @@
+未完成プログラム　ファイル名：ex_kouka3.html
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 演習問題</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+
+</head>
+
+<body>
+  <h2>コンポーネントを作って表示する例</h2>
+  <div id="app">
+    <book-component></book-component>
+    <elbook-component></elbook-component>
+    <dvd-component></dvd-component>
+  </div>
+
+  <script>
+    let book = {
+      template: `
+      <p class="book-comp">
+        書式：ノルウェーの森<br>
+        著者：村上春樹<br>
+        定価：１２００円
+      </p>
+      `
+    }
+    let elbook = {
+      template: `
+      <p class="elbook-comp">
+        書式：Vue.js開発入門 Kindle版<br>
+        著者：Vue.js公式サイト<br>
+        定価：２５００円
+      </p>
+      `
+    }
+    let dvd = {
+      template: `
+      <p class="dvd-comp">
+        書式：ブレードランナー<br>
+        著者：リドリー・スコット<br>
+        定価：９００円
+      </p>
+      `
+    }
+    new Vue({
+      el: '#app',
+      components: {
+        "bookComponent": book,
+        "elbookComponent": elbook,
+        "dvdComponent": dvd,
+      }
+    })
+  </script>
+
+  <style>
+    p {
+      width: 350px;
+      border: solid;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .book-comp {
+      background-color: #F0FFF0;
+      border-color: darkgreen;
+    }
+
+    .elbook-comp {
+      background-color: #FFF0F5;
+      border-color: orange;
+    }
+
+    .dvd-comp {
+      background-color: #F5F5DC;
+      border-color: burlywood;
+    }
+  </style>
+</body>
+
+</html>
+ 

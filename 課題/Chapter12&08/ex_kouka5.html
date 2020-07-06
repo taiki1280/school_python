@@ -1,0 +1,139 @@
+未完成プログラム　ファイル名：ex_kouka3.html
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 演習問題</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+
+</head>
+
+<body>
+  <h2>コンポーネントを作って表示する例</h2>
+  <div id="app">
+    <book-component title="ノルウェーの森" author="村上春樹">
+    </book-component>
+    <elbook-component title="Vue.js開発入門 Kindle版" author="Vue.js公式サイト">
+    </elbook-component>
+    <dvd-component title="ブレードランナー" director="リドリー・スコット">
+    </dvd-component>
+  </div>
+
+  <script>
+    let book = {
+      template: `
+      <p class="book-comp">
+        書式：{{title}}<br>
+        著者：{{author}}<br>
+        定価：{{price}}円
+        <button @click="add_100">１００円値上げ</button>
+      </p>
+      `,
+      data() {
+        return {
+          price: 1200
+        }
+      },
+      methods: {
+        add_100() {
+          this.price += 100
+        }
+      },
+      props: {
+        title: String,
+        author: String,
+      }
+    }
+    let elbook = {
+      template: `
+      <p class="elbook-comp">
+        書式：{{title}}<br>
+        著者：{{author}}<br>
+        定価：{{price}}円
+        <button @click="add_100">１００円値上げ</button>
+      </p>
+      `,
+      data() {
+        return {
+          price: 2500
+        }
+      },
+      methods: {
+        add_100() {
+          this.price += 100
+        }
+      },
+      props: {
+        title: String,
+        author: String,
+      }
+    }
+    let dvd = {
+      template: `
+      <p class="dvd-comp">
+        書式：{{title}}<br>
+        著者：{{director}}<br>
+        定価：{{price}}円
+        <button @click="add_100">１００円値上げ</button>
+      </p>
+      `,
+      data() {
+        return {
+          price: 900
+        }
+      },
+      methods: {
+        add_100() {
+          this.price += 100
+        }
+      },
+      props: {
+        title: String,
+        director: String,
+      }
+    }
+    new Vue({
+      el: '#app',
+      components: {
+        "bookComponent": book,
+        "elbookComponent": elbook,
+        "dvdComponent": dvd,
+      },
+      data: {
+        price: 1200
+      }
+    })
+  </script>
+
+  <style>
+    p {
+      width: 350px;
+      border: solid;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .book-comp {
+      background-color: #F0FFF0;
+      border-color: darkgreen;
+    }
+
+    .elbook-comp {
+      background-color: #FFF0F5;
+      border-color: orange;
+    }
+
+    .dvd-comp {
+      background-color: #F5F5DC;
+      border-color: burlywood;
+    }
+  </style>
+</body>
+
+</html>
+ 

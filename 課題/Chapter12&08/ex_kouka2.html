@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 演習問題</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>定価と個数を入力し各種消費税率込み価格を計算</h2>
+  <div id="app">
+    定価：<input v-model.number="price"><br>
+    個数：<input v-model.number="number">
+    <h3>各種消費税率による税込み価格</h3>
+    <p>３％　：{{ taxPrice3 }} 円</p>
+    <p>５％　：{{ taxPrice5 }} 円</p>
+    <p>８％　：{{ taxPrice8 }} 円</p>
+    <p>１０％：{{ taxPrice10 }} 円</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        price: 130,
+        number: 7,
+      },
+      computed: {
+        taxPrice3() {
+          return parseInt(this.price * this.number * (1.00 + 3 / 100));
+        },
+        taxPrice5() {
+          return parseInt(this.price * this.number * (1.00 + 5 / 100));
+        },
+        taxPrice8() {
+          return parseInt(this.price * this.number * (1.00 + 8 / 100));
+        },
+        taxPrice10() {
+          return parseInt(this.price * this.number * (1.00 + 10 / 100));
+        },
+      }
+
+    })
+  </script>
+</body>
+
+</html>
+ 

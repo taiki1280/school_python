@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js 演習問題</title>
+  <link href="main.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>各種図形の計算</h2>
+    <div>
+      <p>
+        ３角形<br>
+        底辺 = <input v-model.number="bottom"><br>
+        高さ = <input v-model.number="height">
+      </p>
+      <p>
+        円<br>
+        半径 = <input v-model.number="radius">
+      </p>
+      <p>
+        台形<br>
+        上底 = <input v-model.number="upper"><br>
+        下底 = <input v-model.number="lower"><br>
+        高さ = <input v-model.number="trapHeight">
+      </p>
+    </div>
+
+    <h3>計算結果</h3>
+    <p>３角形<br>
+      面積 = {{triangleArea}}
+    </p>
+    <p>円<br>
+      円周 = {{circum}}<br>
+      面積 = {{area}}
+    </p>
+    <p>台形<br>
+      面積 = {{trapArea}}
+    </p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        bottom: 12.3,
+        height: 24.5,
+        radius: 55.3,
+        upper: 10.3,
+        lower: 20.4,
+        trapHeight: 5.5
+      },
+      computed: {
+        triangleArea() {
+          return this.bottom * this.height / 2;
+        },
+        circum() {
+          return 2 * this.radius * 3.14;
+        },
+        area() {
+          return this.radius * this.radius * 3.14;
+        },
+        trapArea() {
+          return (this.upper + this.lower) * this.trapHeight / 2;
+        },
+      }
+    })
+  </script>
+</body>
+
+</html>
