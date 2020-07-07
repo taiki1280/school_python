@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>効果測定</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+</head>
+
+<body>
+  <h2>底辺と高さを入力したら三角形の面積を求める</h2>
+  <div id="app">
+    底辺：<input v-model.number="base" type="number"><br>
+    高さ：<input v-model.number="height" type="number"><br>
+    <p>三角形の面積 = {{ area }}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        base: 56.3,
+        height: 24.6
+      },
+      computed: {
+        area() {
+          return this.base * this.height / 2;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
+ 

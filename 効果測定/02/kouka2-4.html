@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>効果測定</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js">
+  </script>
+
+</head>
+
+<body>
+  <h2>コンポーネントを作って表示する例</h2>
+  <div id="app">
+    <aomori-component></aomori-component>
+    <miyagi-component></miyagi-component>
+    <iwate-component></iwate-component>
+    <shizuoka-component></shizuoka-component>
+  </div>
+
+  <script>
+    let aomori = {
+      template: `
+      <p class="aomori-comp">
+        {{name}}県<br>
+        人口：{{toFixed(population)}}万人
+        <button @click="add()">千人増加</button>
+      </p>
+      `,
+      data() {
+        return {
+          name: "青森",
+          population: 124.9,
+        }
+      },
+      methods: {
+        add() {
+          this.population *= 10;
+          this.population += 1;
+          this.population = parseFloat(this.population) / 10;
+        }
+      }
+    }
+    let miyagi = {
+      template: `
+      <p class="miyagi-comp">
+        {{name}}県<br>
+        人口：{{toFixed(population)}}万人
+        <button @click="add()">千人増加</button>
+      </p>
+      `,
+      data() {
+        return {
+          name: "宮城",
+          population: 230.6,
+        }
+      },
+      methods: {
+        add() {
+          this.population += 0.1
+        }
+      }
+    }
+    let iwate = {
+      template: `
+      <p class="iwate-comp">
+        {{name}}県<br>
+        人口：{{toFixed(population)}}万人
+        <button @click="add()">千人増加</button>
+      </p>
+      `,
+      data() {
+        return {
+          name: "岩手",
+          population: 122.9,
+        }
+      },
+      methods: {
+        add() {
+          this.population *= 10;
+          this.population += 1;
+          this.population = parseFloat(this.population) / 10;
+        }
+      }
+    }
+    let shizuoka = {
+      template: `
+      <p class="shizuoka-comp">
+        {{name}}県<br>
+        人口：{{toFixed(population)}}万人
+        <button @click="add()">千人増加</button>
+      </p>
+      `,
+      data() {
+        return {
+          name: "静岡",
+          population: 363.8,
+        }
+      },
+      methods: {
+        add() {
+          this.population *= 10;
+          this.population += 1;
+          this.population = parseFloat(this.population) / 10;
+        }
+      }
+    }
+    new Vue({
+      el: '#app',
+      components: {
+        aomoriComponent: aomori,
+        miyagiComponent: miyagi,
+        iwateComponent: iwate,
+        shizuokaComponent: shizuoka,
+      }
+
+    })
+  </script>
+
+  <style>
+    p {
+      width: 300px;
+      border: solid;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .aomori-comp {
+      background-color: #F0FFF0;
+      border-color: darkgreen;
+    }
+
+    .miyagi-comp {
+      background-color: #FFF0F5;
+      border-color: orange;
+    }
+
+    .iwate-comp {
+      background-color: #F5F5DC;
+      border-color: burlywood;
+    }
+
+    .shizuoka-comp {
+      background-color: #E0FFFF;
+      border-color: #0000CD;
+    }
+  </style>
+</body>
+
+</html>
