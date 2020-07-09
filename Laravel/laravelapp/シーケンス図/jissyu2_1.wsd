@@ -1,0 +1,11 @@
+@startuml hello
+
+actor "ユーザー" as user
+boundary "ブラウザ" as browser
+control "web.php" as web
+control "JissyuController"
+user -> browser :該当ページをリクエスト[/jissyu2]
+browser -> web :GET[/jissyu2]
+web -> JissyuController :@index
+JissyuController -> browser
+@enduml
