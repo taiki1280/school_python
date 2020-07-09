@@ -1,0 +1,13 @@
+@startuml hello
+
+actor "ユーザー" as user
+boundary "ブラウザ" as browser
+control "web.php" as web
+control "HelloController"
+user -> browser :localhost/helloにアクセス
+browser -> web :GET[/hello]
+web -> HelloController :__invoke
+
+
+HelloController -> browser
+@enduml
