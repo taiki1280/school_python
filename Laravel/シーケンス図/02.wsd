@@ -3,7 +3,7 @@
 actor "ユーザー" as user
 boundary "ブラウザ" as browser
 control "web.php" as web
-user -> browser :localhost/helloにアクセス
-browser -> web :GET[/hello]
+user -> browser :localhost/hello/{msg}にアクセス
+browser -> web :GET[/hello/{msg}]
 web -> browser :
 @enduml
