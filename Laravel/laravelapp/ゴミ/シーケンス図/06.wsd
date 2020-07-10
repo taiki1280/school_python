@@ -1,0 +1,15 @@
+@startuml hello
+
+actor "ユーザー" as user
+boundary "ブラウザ" as browser
+control "web.php" as web
+control "HelloController"
+boundary "index.blade.php" as index.blade
+user -> browser :該当ページをリクエスト[/hello]
+browser -> web :GET[/hello]
+web -> HelloController :@index
+HelloController -> index.blade :$msg
+
+
+index.blade -> browser :$msg
+@enduml
