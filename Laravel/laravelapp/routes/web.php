@@ -22,3 +22,6 @@ Route::get('hello', 'HelloController@index');
 Route::post('hello', 'HelloController@post');
 
 Route::get('jissyu', 'JissyuController@index');
+
+Route::get('Jissyu3_1', 'Jissyu3_1Controller@index');
+Route::post('Jissyu3_1', 'Jissyu3_1Controller@post');
