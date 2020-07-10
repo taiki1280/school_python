@@ -1,0 +1,16 @@
+@startuml hello
+
+actor "ユーザー" as user
+boundary "ブラウザ" as browser
+control "web.php" as web
+control "HelloController"
+boundary "index.blade.php" as index.blade
+user -> browser :該当ページをリクエスト[/hello]
+browser -> web :GET[/hello]
+web -> HelloController :@index
+HelloController -> index.blade :$data = ['msg' => '名前']
+user -> index.blade :送信ボタンをクリック
+index.blade -> web :POST[$msg]
+web -> HelloController :@post
+HelloController -> index.blade :$data = ['$msg' => 'こんにちは' . '$msg' . 'さん！']
+@enduml
