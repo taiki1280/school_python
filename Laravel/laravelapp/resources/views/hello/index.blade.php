@@ -12,44 +12,45 @@
 @if (count($errors) > 0)
 <p>入力に問題があります。再入力して下さい。</p>
 @endif
-<table>
-  <form action="/hello" method="post">
+<form action="/hello" method="post">
+  <table>
     @csrf
-    @if ($errors->has('name'))
+    @error('name')
     <tr>
       <th>ERROR</th>
-      <td>{{$errors->first('name')}}</td>
+      <td>{{$message}}</td>
     </tr>
-    @endif
+    @enderror
     <tr>
       <th>name: </th>
       <td><input type="text" name="name" value="{{old('name')}}"></td>
     </tr>
-    @if ($errors->has('mail'))
+    @error('mail')
     <tr>
       <th>ERROR</th>
-      <td>{{$errors->first('mail')}}</td>
+      <td>{{$message}}</td>
     </tr>
-    @endif
+    @enderror
     <tr>
       <th>mail: </th>
       <td><input type="text" name="mail" value="{{old('mail')}}"></td>
     </tr>
-    @if ($errors->has('age'))
+    @error('age')
     <tr>
       <th>ERROR</th>
-      <td>{{$errors->first('age')}}</td>
+      <td>{{$message}}</td>
     </tr>
-    @endif
+    @enderror
     <tr>
       <th>age: </th>
       <td><input type="text" name="age" value="{{old('age')}}"></td>
     </tr>
     <tr>
       <th></th>
-      <td><input type="submit" value="send"></td>
+      <td><input type="submit" value="send">
+      </td>
     </tr>
-</table>
+  </table>
 </form>
 @endsection
 
