@@ -22,4 +22,8 @@
 <div class="subview">
   <p class="subview_title">{{$subview_title}}</p>
   <p class="subview_content">{{$subview_content}}</p>
+  <ul>
+    <!-- ___(1)___('___(2)___',___(3)___,'___(4)___') -->
+    @each('components.version',$version,'item')
+  </ul>
 </div>
