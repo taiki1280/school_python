@@ -25,7 +25,7 @@
       template: `
       <p class="aomori-comp">
         {{name}}県<br>
-        人口：{{toFixed(population)}}万人
+        人口：{{population.toFixed(1)}}万人
         <button @click="add()">千人増加</button>
       </p>
       `,
@@ -37,9 +37,7 @@
       },
       methods: {
         add() {
-          this.population *= 10;
-          this.population += 1;
-          this.population = parseFloat(this.population) / 10;
+          this.population += 0.1
         }
       }
     }
@@ -47,7 +45,7 @@
       template: `
       <p class="miyagi-comp">
         {{name}}県<br>
-        人口：{{toFixed(population)}}万人
+        人口：{{population.toFixed(1)}}万人
         <button @click="add()">千人増加</button>
       </p>
       `,
@@ -67,7 +65,7 @@
       template: `
       <p class="iwate-comp">
         {{name}}県<br>
-        人口：{{toFixed(population)}}万人
+        人口：{{population.toFixed(1)}}万人
         <button @click="add()">千人増加</button>
       </p>
       `,
@@ -79,9 +77,7 @@
       },
       methods: {
         add() {
-          this.population *= 10;
-          this.population += 1;
-          this.population = parseFloat(this.population) / 10;
+          this.population += 0.1
         }
       }
     }
@@ -89,7 +85,7 @@
       template: `
       <p class="shizuoka-comp">
         {{name}}県<br>
-        人口：{{toFixed(population)}}万人
+        人口：{{population.toFixed(1)}}万人
         <button @click="add()">千人増加</button>
       </p>
       `,
@@ -101,9 +97,7 @@
       },
       methods: {
         add() {
-          this.population *= 10;
-          this.population += 1;
-          this.population = parseFloat(this.population) / 10;
+          this.population += 0.1
         }
       }
     }
