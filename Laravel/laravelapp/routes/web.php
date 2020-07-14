@@ -31,7 +31,8 @@ Route::post('Jissyu3_2', 'Jissyu3_2Controller@post');
 
 Route::get('Jissyu5', 'Jissyu3_3Controller@index');
 
-// Route::get('___(1)___', '___(2)___');
 Route::get('Jissyu6', 'Jissyu4_1Controller@index');
-// Route::post('___(3)___', '___(4)___');
 Route::post('Jissyu6', 'Jissyu4_1Controller@post');
+
+Route::get('jissyu7', 'Jissyu4_2Controller@index');
+Route::post('jissyu7', 'Jissyu4_2Controller@post');
