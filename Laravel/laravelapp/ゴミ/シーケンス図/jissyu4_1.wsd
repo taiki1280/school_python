@@ -23,7 +23,7 @@ boundary output.blade.php as output
 user -> browser:該当ページをリクエスト[/jissyu6]
 browser -> web:GET[/jissyu6]
 web -> controller:@index
-controller -> input:@index
+controller -> input
 
 user -> input:送信ボタンをクリック
 web <- input:POST
