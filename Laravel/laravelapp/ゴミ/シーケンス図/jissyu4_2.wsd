@@ -1,4 +1,4 @@
-@startuml jissyu4_1
+@startuml jissyu4_2
 skinparam{
     BackgroundColor #bbb
     DefaultFontColor #000
@@ -16,7 +16,7 @@ skinparam{
 actor ユーザー as user
 boundary ブラウザ as browser
 control web.php as web
-control Jissyu4_1Controller as controller
+control Jissyu4_2Controller as controller
 boundary input.blade.php as input
 boundary output.blade.php as output
 
