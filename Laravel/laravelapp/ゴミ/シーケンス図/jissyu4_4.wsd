@@ -1,0 +1,43 @@
+@startuml jissyu4_4
+skinparam{
+    BackgroundColor #bbb
+    DefaultFontColor #000
+    SequenceLifeLineBorderColor #fff
+    SequenceLifeLineBorderColor #fff
+    BoundaryBorderColor #00f
+    BoundaryBackgroundColor #aff
+    ControlBorderColor #f00
+    ControlBackgroundColor #faa
+    ActorBackgroundColor #ffa
+    ActorBorderColor #ff0
+    ArrowColor #000
+}
+
+actor ユーザー as user
+boundary ブラウザ as browser
+control web.php as web
+control Jissyu4_4Controller as controller
+boundary input.blade.php as input
+control Jissyu4_4Request as Request
+control Jissyu4_4Myrule as Myrule
+boundary output.blade.php as output
+
+user -> browser:該当ページをリクエスト[/jissyu9]
+browser -> web:GET[/jissyu9]
+web -> controller:@index
+controller -> input
+
+user -> input:送信ボタンをクリック
+web <- input:POST
+web -> controller:@post
+controller -> Request:フォームリクエスト
+Request -> Myrule:マイルール呼び出し
+Request <-- Myrule
+controller <-- Request
+
+alt #DarkGreen 成功
+    controller -> output
+else #DarkRed エラー発生
+    controller -> input
+end
+@enduml
