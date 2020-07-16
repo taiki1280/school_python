@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Jissyu4_3Request;
-use Illuminate\Http\Request;
 // use ___(1)___;
-use App\Rules\Jissyu4_3Myrule;
+use App\Http\Requests\Jissyu4_3Request;
 
 class Jissyu4_3Controller extends Controller
 {
