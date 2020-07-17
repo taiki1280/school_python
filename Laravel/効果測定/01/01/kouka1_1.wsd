@@ -1,0 +1,25 @@
+@startuml kouka1_1
+actor "ユーザー" as user
+boundary "ブラウザ" as browser
+control "web.php" as web
+control "Kouka1_1Controller" as controller
+boundary "kouka1_1.index.blade.php" as index
+boundary "layouts.kouka1_1.blade.php" as kouka1_1
+boundary "components.menu.blade.php" as menu
+boundary "components.subview.blade.php" as subview
+user -> browser :該当ページをリクエスト[/kouka1_1]
+browser -> web:GET[/kouka1_1]
+web -> controller :@index
+controller -> index
+index -> kouka1_1 :@extends
+index <-- kouka1_1
+index -> menu :@component
+index <-- menu
+index -> subview :@include
+index <-- subview
+
+
+
+
+
+@enduml
