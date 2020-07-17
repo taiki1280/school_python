@@ -1,0 +1,20 @@
+@extends('layouts.jissyu10')
+@section('method','GET')
+@section('list')
+<li>
+  こんにちは、{{$data['name']}}さん。
+</li>
+<li>
+  年齢は{{$data['age']}}です。
+</li>
+<li>
+  郵便番号は{{$data['post_num']}}です。
+</li>
+<li>
+  性別は{{$data['sex']}}です。
+</li>
+<li>
+  趣味は{{implode("と",$data['hobbies'])}}です。
+</li>
+<li><button type="submit">戻る</button></li>
+@endsection
