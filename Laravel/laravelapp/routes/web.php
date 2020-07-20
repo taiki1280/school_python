@@ -48,7 +48,8 @@ Route::post('jissyu10', 'Jissyu4_5Controller@post');
 
 Route::get('kouka1_1', 'Kouka1_1Controller@index');
 
-// Route::get('___(1)___', '___(2)___');
 Route::get('kouka1_2', 'Kouka1_2Controller@index');
-// Route::post('___(3)___', '___(4)___');
 Route::post('kouka1_2', 'Kouka1_2Controller@post');
+
+Route::get('hello/add', 'HelloController@add');
+Route::post('hello/add', 'HelloController@create');
