@@ -1,0 +1,33 @@
+@startuml jissyu5_1
+skinparam{
+    BackgroundColor #bbb
+    DefaultFontColor #000
+    SequenceLifeLineBorderColor #fff
+    SequenceLifeLineBorderColor #fff
+    BoundaryBorderColor #00f
+    BoundaryBackgroundColor #aff
+    ControlBorderColor #f00
+    ControlBackgroundColor #faa
+    ActorBackgroundColor #ffa
+    ActorBorderColor #ff0
+    ArrowColor #000
+}
+
+actor ユーザー as user
+boundary ブラウザ as browser
+control web.php as web
+control Jissyu5_1Controller as controller
+boundary input.blade.php as input
+boundary show.blade.php as show
+
+user -> browser:該当ページをリクエスト[/jissyu10]
+browser -> web:GET[/jissyu10]
+web -> controller:@index
+controller -> input
+
+user -> input:送信ボタンをクリック
+web <- input:GET[/jissyu/show]
+web -> controller:@show
+controller -> show:
+
+@enduml
