@@ -64,3 +64,19 @@ Route::get('/jissyu10', 'Jissyu5_1Controller@index');
 Route::get('/jissyu10/show', 'Jissyu5_1Controller@show');
 
 Route::get('hello/show', 'HelloController@show');
+
+Route::get('jissyu11', 'Jissyu5_2Controller@index');
+// Route::get('___(1)___', 'Jissyu5_2Controller@show');
+Route::get('jissyu11/show', 'Jissyu5_2Controller@show');
+// Route::get('jissyu11/add', '___(2)___');
+Route::get('jissyu11/add', 'Jissyu5_2Controller@add');
+// Route::post('___(3)___', 'Jissyu5_2Controller@create');
+Route::post('jissyu11/create', 'Jissyu5_2Controller@create');
+// Route::get('jissyu11/edit', '___(4)___');
+Route::get('jissyu11/edit', 'Jissyu5_2Controller@edit');
+// Route::post('___(5)___', 'Jissyu5_2Controller@update');
+Route::post('jissyu11/update', 'Jissyu5_2Controller@update');
+// Route::get('jissyu11/del', '___(6)___');
+Route::get('jissyu11/del', 'Jissyu5_2Controller@del');
+// Route::post('___(7)___', 'Jissyu5_2Controller@remove');
+Route::post('jissyu11/remove', 'Jissyu5_2Controller@remove');
