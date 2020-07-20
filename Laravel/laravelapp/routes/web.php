@@ -43,8 +43,8 @@ Route::post('jissyu8', 'Jissyu4_3Controller@post');
 Route::get('jissyu9', 'Jissyu4_4Controller@index');
 Route::post('jissyu9', 'Jissyu4_4Controller@post');
 
-Route::get('jissyu10', 'Jissyu4_5Controller@index');
-Route::post('jissyu10', 'Jissyu4_5Controller@post');
+Route::get('jissyu9_ex', 'Jissyu4_5Controller@index');
+Route::post('jissyu9_ex', 'Jissyu4_5Controller@post');
 
 Route::get('kouka1_1', 'Kouka1_1Controller@index');
 

@@ -1,4 +1,4 @@
-@extends('layouts.jissyu10')
+@extends('layouts.jissyu9_ex')
 @section('method','POST')
 @section('list')
 <li>
