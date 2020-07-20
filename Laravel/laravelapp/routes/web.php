@@ -62,3 +62,5 @@ Route::post('hello/del', 'HelloController@remove');
 
 Route::get('/jissyu10', 'Jissyu5_1Controller@index');
 Route::get('/jissyu10/show', 'Jissyu5_1Controller@show');
+
+Route::get('hello/show', 'HelloController@show');
