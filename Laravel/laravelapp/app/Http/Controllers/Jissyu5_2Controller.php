@@ -59,7 +59,7 @@ class Jissyu5_2Controller extends Controller
       'mail' => $request->mail,
       'age' => $request->age,
     ];
-    
+
     // DB::update('___(16)___', $param);
     DB::update('update people set name =:name, mail = :mail, age = :age where id = :id', $param);
     return redirect('/jissyu11');
@@ -68,7 +68,7 @@ class Jissyu5_2Controller extends Controller
   public function del(Request $request)
   {
     $param = ['id' => $request->id];
-    $items = DB::select('delete from people where id =:id', $param);
+    $items = DB::select('select * from people where id = :id', $param);
     return view('jissyu5_2.del', ['items' => $items]);
   }
 
@@ -76,7 +76,7 @@ class Jissyu5_2Controller extends Controller
   {
     $param = ['id' => $request->id];
     // DB::delete('___(17)___', $param);
-    DB::delete('select * from people <wher></wher>e id = :id', $param);
+    DB::delete('delete from people where id =:id', $param);
     // return redirect('___(18)___');
     return redirect('/jissyu11');
   }
