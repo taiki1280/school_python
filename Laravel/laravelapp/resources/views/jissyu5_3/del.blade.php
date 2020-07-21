@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-  <form action="/jissyu11/remove" method="post">
+  <form action="/jissyu12/remove" method="post">
   <table>
   @foreach ($items as $item)
     @csrf

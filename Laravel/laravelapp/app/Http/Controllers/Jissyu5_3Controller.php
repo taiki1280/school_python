@@ -17,8 +17,8 @@ class Jissyu5_3Controller extends Controller
     {
         $id = $request->id;
         // $item = ___(2)___;
-        $item = DB::table("people")->where("id",$id)->get();
-        return view('jissyu5_3.show', ['item' => $item]);
+        $items = DB::table("people")->where("id",$id)->get();
+        return view('jissyu5_3.show', ['items' => $items]);
     }
     public function add()
     {
