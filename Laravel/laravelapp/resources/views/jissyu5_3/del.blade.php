@@ -7,16 +7,15 @@
 @endsection
 
 @section('content')
+  {{-- <form action="___(16)___" method="post"> --}}
   <form action="/jissyu12/remove" method="post">
   <table>
-  @foreach ($items as $item)
     @csrf
     <input type="hidden" name="id" value="{{$item->id}}">
     <tr><th>name: </th><td>{{$item->name}}</td></tr>
     <tr><th>mail: </th><td>{{$item->mail}}</td></tr>
     <tr><th>age: </th><td>{{$item->age}}</td></tr>
     <tr><th></th><td><input type="submit" value="削除"></td></tr>
-    @endforeach
   </table>
   </form>
 @endsection

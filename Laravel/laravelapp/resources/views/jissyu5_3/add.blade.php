@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+  {{-- <form action="___(15)___" method="post"> --}}
   <form action="/jissyu12/create" method="post">
   <table>
     @csrf
