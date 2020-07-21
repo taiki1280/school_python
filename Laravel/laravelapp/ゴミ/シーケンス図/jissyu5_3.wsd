@@ -1,0 +1,63 @@
+@startuml jissyu5_3
+skinparam{
+    BackgroundColor #bbb
+    DefaultFontColor #000
+    SequenceLifeLineBorderColor #fff
+    SequenceLifeLineBorderColor #fff
+    BoundaryBorderColor #00f
+    BoundaryBackgroundColor #aff
+    ControlBorderColor #f00
+    ControlBackgroundColor #faa
+    ActorBackgroundColor #ffa
+    ActorBorderColor #ff0
+    ArrowColor #000
+}
+
+actor ユーザー as user
+boundary ブラウザ as browser
+control web.php as web
+control Jissyu5_3Controller as controller
+boundary index.blade.php as index
+boundary show.blade.php as show
+boundary add.blade.php as add
+boundary edit.blade.php as edit
+boundary del.blade.php as del
+
+user -> browser:該当ページをリクエスト[/jissyu11]
+browser -> web:GET[/jissyu11]
+web -> controller:@index
+controller -> index
+
+user -> index:詳細リンクを押下
+web <- index:GET[/jissyu11/show]
+web -> controller:@show
+controller -> show
+
+user -> index:新規登録リンクを押下
+web <- index:GET[/jissyu11/add]
+web -> controller:@add
+controller -> add
+user -> add:新規登録ボタンを押下
+web <- add:POST[/jissyu11/create]
+web -> controller:@create
+controller -> index
+
+user -> index:更新リンクを押下
+web <- index:GET[/jissyu11/edit]
+web -> controller:@edit
+controller -> edit
+user -> edit:更新ボタンを押下
+web <- edit:POST[/jissyu11/update]
+web -> controller:@update
+controller -> index
+
+user -> index:削除リンクを押下
+web <- index:GET[/jissyu11/del]
+web -> controller:@del
+controller -> del
+user -> del:削除ボタンを押下
+web <- del:POST[/jissyu11/remove]
+web -> controller:@remove
+controller -> index
+
+@enduml
