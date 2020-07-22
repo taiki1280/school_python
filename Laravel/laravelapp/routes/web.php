@@ -101,3 +101,8 @@ Route::get('board', 'BoardController@index');
 
 Route::get('board/add', 'BoardController@add');
 Route::post('board/add', 'BoardController@create');
+
+// Route::get('___(1)___', '___(2)___');
+Route::get('jissyu13', 'Jissyu6_1Controller@index');
+// Route::post('___(3)___', '___(4)___');
+Route::post('jissyu13', 'Jissyu6_1Controller@find');
