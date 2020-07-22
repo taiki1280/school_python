@@ -12,9 +12,4 @@ class PersonController extends Controller
     $items = Person::all();
     return view('person.index', ['items' => $items]);
   }
-  
-  public function getData()
-  {
-    return $this->id . ': ' . $this->name . ' (' . $this->age . ')';
-  }
 }
