@@ -19,7 +19,7 @@ class Jissyu6_1Controller extends Controller
   public function find(Request $request)
   {
     // $item = ___(8)___;
-    $item = Person::all()->where("id",$request->input)->first();
+    $item = Person::all()->where("name",$request->input)->first();
     // return view('___(9)___', ['item' => $item]);
     return view('jissyu6_1.show', ['item' => $item]);
   }
