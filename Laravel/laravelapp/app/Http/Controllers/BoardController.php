@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
-
   public function index()
   {
-    $items = Board::all();
+    $items = Board::with('person')->get();
     return view('board.index', ['items' => $items]);
   }
 
