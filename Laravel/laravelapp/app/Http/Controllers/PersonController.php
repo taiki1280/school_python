@@ -17,4 +17,11 @@ class PersonController extends Controller
   {
     return view('person.find', ['input' => '']);
   }
+
+  public function search(Request $request)
+  {
+    $item = Person::find($request->input);
+    $param = ['input' => $request->input, 'item' => $item];
+    return view('person.find', $param);
+  }
 }
