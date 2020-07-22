@@ -82,3 +82,5 @@ Route::get('jissyu12/edit', 'Jissyu5_3Controller@edit');
 Route::post('jissyu12/update', 'Jissyu5_3Controller@update');
 Route::get('jissyu12/del', 'Jissyu5_3Controller@del');
 Route::post('jissyu12/remove', 'Jissyu5_3Controller@remove');
+
+Route::get('person', 'PersonController@index');
