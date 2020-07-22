@@ -16,19 +16,14 @@ class Person extends Model
     'age' => 'integer|min:0|max:150'
   );
 
+  // getDataは残しておく
   public function getData()
   {
-    return $this->id . ': ' . $this->title . ' ('
-      . $this->person->name . ')';
+    return $this->id . ': ' . $this->name . ' (' . $this->age . ')';
   }
 
   public function boards()
   {
     return $this->hasMany('App\Board');
-  }
-
-  public function person()
-  {
-    return $this->belongsTo('App\Person');
   }
 }
