@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+    return view('welcome');
 });
 
 Route::get('hello', 'HelloController@index');
@@ -118,10 +118,10 @@ Route::post('jissyu14/remove', 'Jissyu6_3Controller@remove');
 Route::resource('rest', 'RestappController');
 
 // Route::resource('___(1)___', '___(2)___');
-Route::resource('rest', 'jissyu7_1Controller');
+Route::resource('jissyu7_1', 'jissyu7_1Controller');
 // Route::post('___(3)___', '___(4)___');
 Route::post('jissyu7_1/find', 'jissyu7_1Controller@find');
 //Resourcefulにはfind()メソッドはないので追加
 // Route::get('___(5)___', '___(6)___');
-Route::get('jissyu7_1/del', 'jissyu7_1Controller@del');
+Route::get('jissyu7_1/{id}/del', 'jissyu7_1Controller@del');
 //Resourcefulにはdel()メソッドはないので追加
