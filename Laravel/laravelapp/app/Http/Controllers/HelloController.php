@@ -78,4 +78,9 @@ class HelloController extends Controller
       ->get();
     return view('hello.show', ['items' => $items]);
   }
+
+  public function rest()
+  {
+    return view('hello.rest');
+  }
 }
