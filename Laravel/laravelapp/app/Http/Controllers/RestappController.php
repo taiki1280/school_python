@@ -15,10 +15,16 @@ class RestappController extends Controller
 
   public function create()
   {
+    return view('rest.create');
   }
 
   public function store(Request $request)
   {
+    $restdata = new Restdata;
+    $form = $request->all();
+    unset($form['_token']);
+    $restdata->fill($form)->save();
+    return redirect('/rest');
   }
 
   public function show($id)
