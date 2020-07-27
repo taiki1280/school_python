@@ -122,3 +122,6 @@ Route::post('jissyu7_1/find', 'jissyu7_1Controller@find');
 Route::get('jissyu7_1/{id}/del', 'jissyu7_1Controller@del');
 
 Route::get('hello/rest', 'HelloController@rest');
+
+Route::get('hello/session', 'HelloController@ses_get');
+Route::post('hello/session', 'HelloController@ses_put');
