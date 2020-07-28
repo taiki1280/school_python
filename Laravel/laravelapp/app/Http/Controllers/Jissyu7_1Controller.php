@@ -20,7 +20,7 @@ class Jissyu7_1Controller extends Controller
     }
     // $items = ___(2)___;
     $items = Person::orderBy($sort, 'asc')
-      ->simplePaginate(5);
+      ->Paginate(5);
     // $param = ['input' => '','items' => $items,___(3)___];
     $param = ['input' => '', 'items' => $items, 'sort' => $sort];
     return view('jissyu7_1.index', $param);
