@@ -8,10 +8,21 @@ use Validator;
 
 class Jissyu7_1Controller extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-    $items = Person::all();
-    $param = ['input' => '', 'items' => $items];
+    //$items = Person::all();
+    //$param = ['input' => '','items' => $items];
+    if ($request->has('sort')) {
+      // $sort = ___(1)___;
+      $sort = $request->sort;
+    } else {
+      $sort = 'id';
+    }
+    // $items = ___(2)___;
+    $items = Person::orderBy($sort, 'asc')
+      ->simplePaginate(5);
+    // $param = ['input' => '','items' => $items,___(3)___];
+    $param = ['input' => '', 'items' => $items, 'sort' => $sort];
     return view('jissyu7_1.index', $param);
   }
 
@@ -23,7 +34,6 @@ class Jissyu7_1Controller extends Controller
     $messages = [
       'input.required' => '文字を入力してください。',
     ];
-    // $validator = Validator::make(___(7)___,___(8)___,___(9)___);
     $validator = Validator::make($request->all(), $rules, $messages);
     if ($validator->fails()) {
       return redirect('/jissyu7_1')
@@ -41,7 +51,6 @@ class Jissyu7_1Controller extends Controller
 
   public function store(Request $request)
   {
-    // $this->validate(___(10)___, Person::___(11)___);
     $this->validate($request, Person::$rules);
     $person = new Person;
     $form = $request->all();
@@ -50,7 +59,6 @@ class Jissyu7_1Controller extends Controller
     return redirect('/jissyu7_1');
   }
 
-  // public function show(___(12)___) 
   public function show($id)
   {
     $item = Person::find($id);
@@ -59,12 +67,10 @@ class Jissyu7_1Controller extends Controller
 
   public function edit($id)
   {
-    // $item = Person::find(___(13)___);
     $item = Person::find($id);
     return view('jissyu7_1.edit', ['item' => $item]);
   }
 
-  // public function update(Request $request, ___(14)___)
   public function update(Request $request, $id)
   {
     $this->validate($request, Person::$rules);
@@ -75,7 +81,6 @@ class Jissyu7_1Controller extends Controller
     return redirect('/jissyu7_1');
   }
 
-  // public function del(___(15)___) 
   public function del($id)
   {
     $item = Person::find($id);
@@ -83,7 +88,6 @@ class Jissyu7_1Controller extends Controller
   }
   public function destroy($id)
   {
-    // Person::find(___(16)___)->delete();
     Person::find($id)->delete();
     return redirect('/jissyu7_1');
   }
