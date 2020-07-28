@@ -125,3 +125,8 @@ Route::get('hello/rest', 'HelloController@rest');
 
 Route::get('hello/session', 'HelloController@ses_get');
 Route::post('hello/session', 'HelloController@ses_put');
+
+// Route::get('___(1)___', '___(2)___');
+Route::get('kouka2_1', 'Kouka2_1Controller@index');
+// Route::post('___(3)___', '___(4)___');
+Route::post('kouka2_1/find', 'Kouka2_1Controller@find');
