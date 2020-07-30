@@ -165,10 +165,10 @@ class Div(Calc):
         メソッド名：calc
         引数：なし
         処理：わり算して結果を返す
-        戻り値：わり算の結果（型 int）
+        戻り値：わり算の結果（型 float）
     """
 
-    def calc(self) -> int:
+    def calc(self) -> float:
         return self._number1 / self._number2
 
     # 計算過程と結果を表示するメソッド（do_calc）メソッドのオーバライド

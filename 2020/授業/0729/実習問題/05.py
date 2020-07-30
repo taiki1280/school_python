@@ -84,10 +84,10 @@ class Div:
         メソッド名：div
         引数：number1: int, number2: int（わり算される数値）
         処理：引数をわり算し結果を返す
-        戻り値：わり算の結果（型 int）
+        戻り値：わり算の結果（型 float）
     '''
-    def div(self, number1: int, number2: int) -> int:
-        return int(number1 / number2)
+    def div(self, number1: int, number2: int) -> float:
+        return number1 / number2
 
     # わり算の結果を表示するメソッド（disp_divメソッド）の定義
     '''
