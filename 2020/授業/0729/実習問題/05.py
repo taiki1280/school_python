@@ -1,5 +1,5 @@
 # たし算クラス（Addクラス）の定義
-class Add():
+class Add(object):
     # たし算メソッド（addメソッド）の定義
     '''
     メソッドシグニチャ
@@ -87,7 +87,7 @@ class Div:
         戻り値：わり算の結果（型 int）
     '''
     def div(self, number1: int, number2: int) -> int:
-        return number1 / number2
+        return int(number1 / number2)
 
     # わり算の結果を表示するメソッド（disp_divメソッド）の定義
     '''
@@ -113,7 +113,7 @@ class Mod:
         戻り値：剰余算の結果（型 int）
     '''
     def mod(self, number1: int, number2: int) -> int:
-        return number1 % number2
+        return int(number1 % number2)
 
     # 剰余算の結果を表示するメソッド（disp_modメソッド）の定義
     '''
