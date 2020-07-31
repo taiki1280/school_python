@@ -3,14 +3,14 @@ from abc import ABCMeta
 from abc import abstractmethod
 
 
-# 物体の表面積と体積を計算する抽象クラス（Dimentionクラス）の定義
-class Dimention(metaclass=ABCMeta):
+# 物体の表面積と体積を計算する抽象クラス（Dimensionクラス）の定義
+class Dimension(metaclass=ABCMeta):
     # コンストラクタ定義
-    '''
+    """
     _side: float（物体の辺の長さ）アクセス属性：protected
-    '''
-    def __init__(self, _side: float):
-        self._side = _side
+    """
+    def __init__(self, side: float):
+        self._side = side
 
     # ゲッター定義
     # sideゲッター
@@ -19,41 +19,41 @@ class Dimention(metaclass=ABCMeta):
         return self._side
 
     # 表面積を計算する抽象メソッドの定義
-    '''
+    """
     メソッドシグニチャ
         メソッド名：area
         引数：なし
         処理：物体の表面積を計算して返す
         戻り値：物体の表面積（型 float）
-    '''
+    """
 
     @abstractmethod
     def area(self) -> float:
         pass
 
     # 体積を計算する抽象メソッドの定義
-    '''
+    """
     メソッドシグニチャ
         メソッド名：volume
-        引数：side: float（辺の長さ）アクセス属性：protected
+        引数：なし
         処理：物体の体積を計算して返す
         戻り値：物体の体積（型 float）
-    '''
+    """
 
     @abstractmethod
-    def volume(self, side: float) -> float:
+    def volume(self) -> float:
         pass
 
 
 # 球体の表面積と体積を計算するクラス（Sphereクラス）の定義
-# 抽象クラス Dimention を継承
-class Sphere(Dimention):
+# 抽象クラス Dimension を継承
+class Sphere(Dimension):
     # コンストラクタ定義
-    '''
+    """
     _side: float（球体の半径）アクセス属性：protected
-    '''
-    def __init__(self, _side: float):
-        super().__init__(_side)
+    """
+    def __init__(self, side: float):
+        super().__init__(side)
 
     # 球体の表面積を計算するメソッド area の実装
     # 球体の表面積 = 4.0 * 3.14 * 半径の２乗
@@ -67,14 +67,14 @@ class Sphere(Dimention):
 
 
 # 立方体の表面積と体積を計算するクラス（Cubeクラス）の定義
-# 抽象クラス Dimention を継承
-class Cube(Dimention):
+# 抽象クラス Dimension を継承
+class Cube(Dimension):
     # コンストラクタ定義
-    '''
+    """
     _side: float（立方体の辺）アクセス属性：protected
-    '''
-    def __init__(self, _side: float):
-        super().__init__(_side)
+    """
+    def __init__(self, side: float):
+        super().__init__(side)
 
     # 立方体の表面積を計算するメソッド area の実装
     # 立方体の表面積 = 6.0 * １辺の２乗
