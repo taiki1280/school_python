@@ -1,5 +1,5 @@
 # CarToyクラス定義
-class CarToy:
+class CarToy(object):
     # コンストラクタ定義
     def __init__(self, code: str, price: int):
         self._code = code
@@ -28,12 +28,14 @@ class CarToy:
         self._price = price
 
     # 走るメソッド（goメソッド）定義
-    def go(self):
+    @staticmethod
+    def go():
         print("くるまを走らせます。")
         print("ブロロロロー！！")
 
     # ライトをつけるメソッド（lightメソッド）定義
-    def light(self):
+    @staticmethod
+    def light():
         pass
 
 
@@ -49,12 +51,13 @@ class PatrolCarToy(CarToy):
         print("ウーウーウー！！ブロロー！！")
 
     # サイレンを鳴らすメソッド（sirenメソッド）定義
-    def siren(self):
+    @staticmethod
+    def siren():
         print("パトカーのサイレンを鳴らします。")
         print("ウーウーウー！！")
 
 
-class TrainToy():
+class TrainToy(object):
     # コンストラクタ定義
     def __init__(self, _code: str, _price: int):
         self._code = _code
@@ -83,17 +86,19 @@ class TrainToy():
         self._price = price
 
     # 走るメソッド（goメソッド）定義
-    def go(self):
+    @staticmethod
+    def go():
         print("電車を走らせます。")
         print("ガタンゴトン！ガタンゴトン！！")
 
     # 警笛を鳴らすメソッド（hornメソッド）定義
-    def horn(self):
+    @staticmethod
+    def horn():
         print("電車の警笛を鳴らします。")
         print("プォー！！プォー！！")
 
 
-class ShopKeeper():
+class ShopKeeper(object):
     # コンストラクタ定義
     def __init__(self, name: str):
         self.name = name
