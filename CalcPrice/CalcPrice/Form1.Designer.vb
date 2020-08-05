@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class frmCalcPrice
     Inherits System.Windows.Forms.Form
 
     'フォームがコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
@@ -30,6 +30,8 @@ Partial Class Form1
         Me.lblSalesPrice = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnExit = New System.Windows.Forms.Button()
+        Me.txtStandardPrice = New System.Windows.Forms.TextBox()
+        Me.btnCalc = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -44,10 +46,11 @@ Partial Class Form1
         'lblStandardPrice
         '
         Me.lblStandardPrice.AutoSize = True
-        Me.lblStandardPrice.Location = New System.Drawing.Point(200, 50)
+        Me.lblStandardPrice.Location = New System.Drawing.Point(263, 50)
         Me.lblStandardPrice.Name = "lblStandardPrice"
-        Me.lblStandardPrice.Size = New System.Drawing.Size(0, 18)
+        Me.lblStandardPrice.Size = New System.Drawing.Size(26, 18)
         Me.lblStandardPrice.TabIndex = 1
+        Me.lblStandardPrice.Text = "円"
         '
         'rbNone
         '
@@ -101,19 +104,38 @@ Partial Class Form1
         'btnExit
         '
         Me.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnExit.Location = New System.Drawing.Point(203, 314)
+        Me.btnExit.Location = New System.Drawing.Point(314, 313)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(136, 43)
         Me.btnExit.TabIndex = 7
         Me.btnExit.Text = "終了(&X)"
         Me.btnExit.UseVisualStyleBackColor = True
         '
-        'Form1
+        'txtStandardPrice
         '
+        Me.txtStandardPrice.Location = New System.Drawing.Point(157, 47)
+        Me.txtStandardPrice.Name = "txtStandardPrice"
+        Me.txtStandardPrice.Size = New System.Drawing.Size(100, 25)
+        Me.txtStandardPrice.TabIndex = 8
+        '
+        'btnCalc
+        '
+        Me.btnCalc.Location = New System.Drawing.Point(314, 179)
+        Me.btnCalc.Name = "btnCalc"
+        Me.btnCalc.Size = New System.Drawing.Size(136, 43)
+        Me.btnCalc.TabIndex = 9
+        Me.btnCalc.Text = "計算(&C)"
+        Me.btnCalc.UseVisualStyleBackColor = True
+        '
+        'frmCalcPrice
+        '
+        Me.AcceptButton = Me.btnCalc
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnExit
-        Me.ClientSize = New System.Drawing.Size(378, 444)
+        Me.ClientSize = New System.Drawing.Size(478, 444)
+        Me.Controls.Add(Me.btnCalc)
+        Me.Controls.Add(Me.txtStandardPrice)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.lblSalesPrice)
         Me.Controls.Add(Me.Label3)
@@ -124,7 +146,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "frmCalcPrice"
         Me.Text = "割引価格計算プログラム"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -139,4 +161,6 @@ Partial Class Form1
     Friend WithEvents lblSalesPrice As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents btnExit As Button
+    Friend WithEvents txtStandardPrice As TextBox
+    Friend WithEvents btnCalc As Button
 End Class
