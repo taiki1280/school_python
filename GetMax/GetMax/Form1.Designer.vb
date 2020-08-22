@@ -77,7 +77,7 @@ Partial Class fmtGetMax
         Dim list(10) As Integer
         Dim r As Random = New Random()
         Dim randNum As Integer
-        For i As Integer = 0 To 10
+        For i As Integer = 0 To 10 - 1
             randNum = r.Next(100 + 1)
             list(i) = randNum
             lstScore.Items.Add(randNum)
