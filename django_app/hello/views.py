@@ -3,4 +3,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello Django!!")
+    msg = request.GET['msg']
+    return HttpResponse('you typed: "' + msg + '".')
