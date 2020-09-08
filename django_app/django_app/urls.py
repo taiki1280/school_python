@@ -21,6 +21,6 @@ urlpatterns = [
 ]
 
 # アプリケーションの名前を一元管理してみる
-app_name = ["hello", "ex_hello1", "ex_hello2", "ex_hello3"]
+app_name = ["hello", "ex_hello1", "ex_hello2", "ex_hello3", "ex_templates1"]
 for v in app_name:
     urlpatterns.append(path(f'{v}/', include(f'{v}.urls')))
