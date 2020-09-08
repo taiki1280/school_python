@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 
 def index(request, name, age, birthplace):
@@ -16,3 +17,7 @@ def index(request, name, age, birthplace):
         "age": age,
         "birthplace": birthplace
     })
+
+
+def error(request):
+    return HttpResponse("<h1>name/int:age/birthplaceの形で追記してください</h1>")

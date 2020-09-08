@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='index')
 ]
 
 # アプリケーションの名前を一元管理してみる
@@ -30,5 +32,6 @@ app_name = [
     "ex_templates2",
     "ex_templates3",
 ]
+
 for v in app_name:
     urlpatterns.append(path(f'{v}/', include(f'{v}.urls')))
