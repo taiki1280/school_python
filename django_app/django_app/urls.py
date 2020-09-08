@@ -16,15 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('hello/', include('hello.urls')),
-    # path('ex_hello1/', include('ex_hello1.urls')),
-    # path('ex_hello2/', include('ex_hello2.urls')),
 ]
 
 # アプリケーションの名前を一元管理してみる
-app_name = ["hello", "ex_hello1", "ex_hello2"]
+app_name = ["hello", "ex_hello1", "ex_hello2", "ex_hello3"]
 for v in app_name:
     urlpatterns.append(path(f'{v}/', include(f'{v}.urls')))
