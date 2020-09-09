@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.messages', 'django.contrib.staticfiles',
 ]
 
-INSTALLED_APPS += ['ex_hello1','ex_hello2', 'ex_hello3',"ex_templates1", "ex_templates2","ex_templates3",  "ex_forms1", "ex_forms2"]
+INSTALLED_APPS += ['ex_hello1','ex_hello2', 'ex_hello3',"ex_templates1", "ex_templates2","ex_templates3",  "ex_forms1", "ex_forms2","ex_forms3"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
