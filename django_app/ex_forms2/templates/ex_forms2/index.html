@@ -10,19 +10,19 @@
 
 <body>
   <h1>{{title}}</h1>
-  {% for k,v in msg.items %}
-  <p>{{k}}:{{v}}</p>
+  {% for v in msg %}
+  <p>{{v}}</p>
   {% endfor %}
-  <form action="{% url 'index' %}" method="{{goto}}">
+  <form action="{% url 'index' %}" method="POST">
     {% csrf_token %}
     {{form}}
-    {% if goto == 'POST' %}
     <button type="submit">click</button>
-    {% else %}
-    <button type="submit">戻る</button>
-    {% endif %}
   </form>
-  {{a|safe}}
+  {% if goto == 'GET' %}
+  <form action="{% url 'index' %}" method="{{goto}}">
+    <button type="submit">戻る</button>
+  </form>
+  {% endif %}
 </body>
 
 </html>
