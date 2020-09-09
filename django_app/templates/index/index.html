@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}学校の授業のトップページ{% endblock title %}
+{% block subtitle %}学校の授業のトップページ{% endblock subtitle %}
+
+{% block content %}
+<ul>
+  {% for v in list %}
+  <li>
+    <a href="{{v}}" target="_blank">{{v}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
