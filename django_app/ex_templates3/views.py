@@ -15,7 +15,7 @@ def next(request):
     tmp = {
         "title": "Django Templates",
         "subtitle": "東北の県庁所在地名",
-        "list": ["青森県", "岩手県", "秋田県", "宮城県", "山形県", "福島県"],
+        "list": ["青森市", "盛岡市", "秋田市", "仙台市", "山形市", "福島市"],
         "goto": "index"
     }
     return render(request, 'ex_templates3/index.html', tmp)
