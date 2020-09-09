@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth',
     'django.contrib.contenttypes', 'django.contrib.sessions',
     'django.contrib.messages', 'django.contrib.staticfiles', 'ex_hello1',
-    'ex_hello2', 'ex_hello3', "ex_forms1"
+    'ex_hello2', 'ex_hello3', "ex_forms1", "ex_forms2"
 ]
 
 MIDDLEWARE = [
