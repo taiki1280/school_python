@@ -25,7 +25,7 @@ urlpatterns = [
 # アプリケーションの名前を一元管理してみる
 app_name = [
     "hello", "ex_hello1", "ex_hello2", "ex_hello3", "ex_templates1",
-    "ex_templates2", "ex_templates3", "ex_forms1", "ex_forms2","ex_forms3"
+    "ex_templates2", "ex_templates3", "ex_forms1", "ex_forms2","ex_forms3","ex_forms4"
 ]
 
 for v in app_name:
