@@ -9,7 +9,6 @@ def index(request):
         "msg": "文字列を入力してください"
     }
     return render(request, 'ex_forms1/index.html', tmp)
-    # return render(request, 'base.html')
 
 
 def form(request):
