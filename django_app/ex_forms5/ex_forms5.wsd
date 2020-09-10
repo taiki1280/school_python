@@ -1,0 +1,4 @@
+@startuml ex_forms5
+actor ユーザ as user
+ブラウザ as broeser
+user -> browser
