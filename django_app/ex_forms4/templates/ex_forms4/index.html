@@ -12,11 +12,12 @@
 <body class="container">
   <h1 class="display-4 text-primary">{{title}}</h1>
   {% if request.method == 'POST' %}
-  <table border="1">
+  <p class="mb-1">県の基本情報</p>
+  <table class="mb-5" border="1">
     {% for v in msg %}
     <tr>
-      <th class="h5" scope="col">{{v.0}}</th>
-      <td class="h5">{{v.1}}</td>
+      <th scope="col">{{v.0}}</th>
+      <td>{{v.1}}</td>
     </tr>
     {% endfor %}
   </table>
@@ -25,12 +26,13 @@
   {% endif %}
   <form action="{% url 'index' %}" method="post">
     {% csrf_token %}
-    {% for field in form %}
+    <!-- {% for field in form %}
     <div class="form-group">
       <label class="control-label" for="{{ field.name }}">{{ field.label }}</label>
       <input type="" class="form-control" name="{{ field.name }}" id="{{ field.name }}">
     </div>
-    {% endfor %}
+    {% endfor %} -->
+    {{form}}
     <input class="btn btn-primary" type="submit" value="click">
   </form>
   {% if request.method == 'POST' %}
