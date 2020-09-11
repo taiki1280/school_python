@@ -1,13 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import TemplateView
+from .forms import HelloForm
 
 
-def index(request, id, nickname):
-    result = 'your id: ' + str(id) + ', name: "' \
-        + nickname + '".'
-    return HttpResponse(result)
+class HelloView(TemplateView):
+    def __init__(self):
+        self.params = {'title': 'Hello', 'form': HelloForm(), 'result': None}
 
+    def get(self, request):
+        return render(request, 'hello/index.html', self.params)
 
-def error(request):
-    result = 'int:id/nickname/の形にしてください'
-    return HttpResponse(result)
+    def post(self, request):
+        ch = request.POST.getlist('choice')
+        self.params['result'] = 'selected: ' + str(ch) + '.'
+        self.params['form'] = HelloForm(request.POST)
+        return render(request, 'hello/index.html', self.params)

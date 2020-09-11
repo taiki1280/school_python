@@ -1,7 +1,6 @@
 from django.urls import path
-from . import views
+from .views import HelloView
 
 urlpatterns = [
-    path('<int:id>/<nickname>/', views.index, name='index'),
-    path('', views.error, name='error'),
+    path('', HelloView.as_view(), name='index'),
 ]
