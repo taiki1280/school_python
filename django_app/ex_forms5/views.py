@@ -11,10 +11,12 @@ class View(TemplateView):
 
     def post(self, request):
         PC = []
-        for v in ["Windows10", "Mac", "linux"]:
+        for v in ["Windows10", "Mac", "Linux"]:
             if v in request.POST:
                 PC.append(v)
-        if len(PC) == 1:
+        if len(PC) == 0:
+            PC = "ない"
+        elif len(PC) == 1:
             PC = PC[0]
         else:
             a = PC[0]
