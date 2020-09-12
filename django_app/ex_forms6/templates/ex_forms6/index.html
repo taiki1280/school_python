@@ -20,10 +20,14 @@
   </form>
   <!-- POST通信の時 -->
   {% else %}
-  <p class="mb-0">あなたの名前は<b>{{name}}</b>です。</p>
-  <p class="mb-0">メールアドレスは<b>{{email}}</b>です。</p>
-  <p class="mb-0">お使いのPCは<b>{{PC}}</b>です。</p>
-
+  <table border="1">
+    {% for k,v in form.items%}
+    <tr>
+      <th>{{k}}</th>
+      <td>{{v}}</td>
+    </tr>
+    {% endfor %}
+  </table>
   <form action="{% url 'index' %}" method="GET" class="mt-4">
     <input class="btn btn-primary" type="submit" value="戻る"></input>
   </form>
