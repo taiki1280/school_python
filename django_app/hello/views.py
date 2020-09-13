@@ -1,6 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
-def index(request, nickname, age):
-    result = 'your account: ' + nickname + '" (' + str(age) + ').'
-    return HttpResponse(result)
+def index(request):
+    return render(request, 'hello/index.html')
