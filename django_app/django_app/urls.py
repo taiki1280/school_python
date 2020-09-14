@@ -24,14 +24,17 @@ urlpatterns = [
 
 # アプリケーションの名前を一元管理してみる
 jissyu = [
-    "ex_hello1", "ex_hello2", "ex_hello3", "ex_templates1",
-    "ex_templates2", "ex_templates3", "ex_forms1", "ex_forms2", "ex_forms3",
-    "ex_forms4", "ex_forms5", "ex_forms6"
+    "ex_hello1", "ex_hello2", "ex_hello3", "ex_templates1", "ex_templates2",
+    "ex_templates3", "ex_forms1", "ex_forms2", "ex_forms3", "ex_forms4",
+    "ex_forms5", "ex_forms6"
 ]
 
 lesson = ["hello"]
 
-app_name = lesson
+test = [""]
+
+app_name = test
+# app_name = lesson
 
 for v in app_name:
     urlpatterns.append(path(f'{v}/', include(f'{v}.urls')))
