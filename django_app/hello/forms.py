@@ -2,6 +2,6 @@ from django import forms
 
 
 class HelloForm(forms.Form):
-    data = [('one', 'item 1'), ('two', 'item 2'), ('three', 'item 3')]
-    choice = forms.ChoiceField(label='Choice', \
-            choices=data)
+    data = [('one', 'radio 1'), ('two', 'radio 2'), ('three', 'radio 3')]
+    choice = forms.ChoiceField(label='radio', \
+            choices=data, widget=forms.RadioSelect())
