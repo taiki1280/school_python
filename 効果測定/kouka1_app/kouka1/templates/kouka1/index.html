@@ -1,0 +1,42 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+</head>
+
+<body class="container">
+  <h1 class="display-4 text-primary">{{title}}</h1>
+  <!-- GET通信の時 -->
+  {% if request.method == 'GET' %}
+  <p>個人基本情報：</p>
+  <!-- POST通信の時 -->
+  {% elif request.method == 'POST' %}
+  <table border="1">
+    {% for k,v in msg.items%}
+    <tr>
+      <th>{{k}}</th>
+      <td>{{v}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  <!-- GET,POST共通 -->
+  <form action="{% url 'index' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-primary" type="submit" value="click">
+  </form>
+  <!-- POSTの時のみ -->
+  {% if request.method == 'POST' %}
+  <form action="{% url 'index' %}" method="GET" class="mt-4">
+    <input class="btn btn-primary" type="submit" value="戻る"></input>
+  </form>
+  {% endif %}
+</body>
+
+</html>
