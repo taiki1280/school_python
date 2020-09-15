@@ -7,6 +7,12 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     crossorigin="anonymous">
+  <style>
+    th,
+    td {
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body class="container">
@@ -21,11 +27,16 @@
       <th>価格</th>
     </tr>
     {% for obj in data %}
+    {% for v in obj %}
     <td>{{obj.id}}</td>
     <td>{{obj.title}}</td>
-    <td>{{obj.isBook}}</td>
+    {% if obj.isBook %}
+    <td>本</td>
+    {% else %}
+    <td>雑誌</td>
+    {% endif %}
     <td>{{obj.isbn}}</td>
-    <td>{{obj.price}}</td>
+    <td>{{obj.price}}円</td>
     {% endfor %}
   </table>
 </body>
