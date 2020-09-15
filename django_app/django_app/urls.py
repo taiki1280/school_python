@@ -34,7 +34,8 @@ lesson = ["hello"]
 test = [""]
 
 app_name = lesson
-# app_name = lesson
 
 for v in app_name:
     urlpatterns.append(path(f'{v}/', include(f'{v}.urls')))
+
+app_name += ["admin"]
