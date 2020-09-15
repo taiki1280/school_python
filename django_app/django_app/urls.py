@@ -33,7 +33,7 @@ lesson = ["hello"]
 
 test = [""]
 
-app_name = test
+app_name = lesson
 # app_name = lesson
 
 for v in app_name:
