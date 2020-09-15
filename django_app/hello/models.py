@@ -9,5 +9,4 @@ class Friend(models.Model):
     birthday = models.DateField()
 
     def __str__(self):
-        return '<Friend:id=' + str(self.id) + ', ' + \
-            self.name + '(' + str(self.age) + ')>'
+        return f'name:{self.name}'
