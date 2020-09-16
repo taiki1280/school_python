@@ -18,6 +18,13 @@
 <body class="container">
   <h1 class="display-4 text-primary">{{title}}</h1>
   <p class="h5 mt-4">{{message|safe}}</p>
+  <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <p>
+      ID:<input type="text" name="ID" id="ID">
+      <button type="submit">click</button>
+    </p>
+  </form>
   <table class="table">
     <tr>
       <th>ID</th>
@@ -27,7 +34,6 @@
       <th>価格</th>
     </tr>
     {% for obj in data %}
-    {% for v in obj %}
     <td>{{obj.id}}</td>
     <td>{{obj.title}}</td>
     {% if obj.isBook %}
