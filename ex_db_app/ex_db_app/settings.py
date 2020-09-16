@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-jissyu = ['ex_db1']
+jissyu = ['ex_db1', 'ex_db2']
 
 INSTALLED_APPS += jissyu
 
