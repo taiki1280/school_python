@@ -20,10 +20,8 @@
   <p class="h5 mt-4">{{message|safe}}</p>
   <form action="{% url 'index' %}" method="post">
     {% csrf_token %}
-    <p>
-      ID:<input type="text" name="ID" id="ID">
-      <button type="submit">click</button>
-    </p>
+    {{form}}
+    <button type="submit">click</button>
   </form>
   <table class="table">
     <tr>
