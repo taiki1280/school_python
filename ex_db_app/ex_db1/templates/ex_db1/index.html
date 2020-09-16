@@ -34,15 +34,17 @@
       <th>価格</th>
     </tr>
     {% for obj in data %}
-    <td>{{obj.id}}</td>
-    <td>{{obj.title}}</td>
-    {% if obj.isBook %}
-    <td>本</td>
-    {% else %}
-    <td>雑誌</td>
-    {% endif %}
-    <td>{{obj.isbn}}</td>
-    <td>{{obj.price}}円</td>
+    <tr>
+      <td>{{obj.id}}</td>
+      <td>{{obj.title}}</td>
+      {% if obj.isBook %}
+      <td>本</td>
+      {% else %}
+      <td>雑誌</td>
+      {% endif %}
+      <td>{{obj.isbn}}</td>
+      <td>{{obj.price}}円</td>
+    </tr>
     {% endfor %}
   </table>
 </body>
