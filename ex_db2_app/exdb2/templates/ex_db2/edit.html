@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>{{title}}</title>
+  <title>編集画面{{title}}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     crossorigin="anonymous">
 </head>
@@ -12,7 +12,7 @@
 <body class="container">
   <h1 class="display-4 text-primary">{{title}}</h1>
   {% if request.method == 'GET' %}
-  <form action="{% url 'create' %}" method="post">
+  <form action="{% url 'edit' id %}" method="POST">
     {% csrf_token %}
     <table class="table">
       {{form.as_table}}

@@ -7,6 +7,13 @@ from .models import Regist
 tmp = {"title": "所属学生基本情報"}
 
 
+def index(request):
+    tmp['title'] = "所属学生基本情報"
+    tmp['form'] = RegistForm(request.POST)
+    tmp['data'] = Regist.objects.all()
+    return render(request, 'ex_db2/index.html', tmp)
+
+
 def create(request):
     if request.method == 'GET':
         tmp['form'] = RegistForm()
@@ -26,10 +33,28 @@ def create(request):
         register = RegistForm(request.POST, instance=t1)
         register.save()
         return redirect(to='/ex_db2')
-
-
-def index(request):
-    tmp['title'] = "所属学生基本情報"
-    tmp['form'] = RegistForm(request.POST)
-    tmp['data'] = Regist.objects.all()
     return render(request, 'ex_db2/index.html', tmp)
+
+
+def edit(request, num):
+    obj = Regist.objects.get(id=num)
+    if request.method == 'GET':
+        tmp['id'] = num
+        tmp['data'] = obj
+        return render(request, 'ex_db2/edit.html', tmp)
+    elif request.method == 'POST':
+        register = RegistForm(request.POST, instance=obj)
+        register.save()
+        return redirect(to='/ex_db2')
+
+
+def delete(request, num):
+    obj = Regist.objects.get(id=num)
+    if request.method == 'GET':
+        tmp['id'] = num
+        tmp['data'] = obj
+        return render(request, 'ex_db2/delete.html', tmp)
+    elif request.method == 'POST':
+        register = RegistForm(request.POST, instance=obj)
+        register.save()
+        return redirect(to='/ex_db2')
