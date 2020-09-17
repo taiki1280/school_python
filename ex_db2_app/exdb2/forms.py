@@ -3,26 +3,27 @@ from .models import Regist
 
 
 class RegistForm(forms.ModelForm):
+    genders = ["男性", "女性", "未回答"]
+    couse = ["システム開発", "AIデータサイエンス", "高度システム開発", "ネットワークセキュリティ"]
+    subjects = [
+        "Python", "JavaScript", "Java", "PHP", "C言語", "Go言語", "オブジェクト指向設計",
+        "ディープラーニング", "データサイエンス", "ネットワークプログラミング", "セキュアプログラミング",
+        "クラウドネイティブプログラミング"
+    ]
     name = forms.CharField(label='氏名', widget=forms.TextInput())
     age = forms.IntegerField(label='年齢', widget=forms.NumberInput())
-    gender = forms.ChoiceField(choices=[(v, v) for v in Regist.genders],
+    gender = forms.ChoiceField(choices=[(v, v) for v in genders],
                                label='性別',
                                widget=forms.RadioSelect())
-    belong = forms.ChoiceField(choices=[(v, v) for v in Regist.couse],
+    belong = forms.ChoiceField(choices=[(v, v) for v in couse],
                                label='所属コース',
                                widget=forms.Select())
 
     subject = forms.MultipleChoiceField(
-        choices=[(v, v) for v in Regist.subjects],
+        choices=[(v, v) for v in subjects],
         label='選択科目',
-        widget=forms.SelectMultiple(attrs={'size': len(Regist.subjects)}))
+        widget=forms.SelectMultiple(attrs={'size': len(subjects)}))
 
     class Meta:
         model = Regist
         fields = ['name', 'age', 'gender', 'belong', 'subject']
-        widgets = {
-            'gender': forms.RadioSelect(),
-            'belong': forms.Select(),
-            'subject':
-            forms.SelectMultiple(attrs={'size': len(Regist.subjects)})
-        }

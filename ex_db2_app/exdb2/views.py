@@ -29,17 +29,17 @@ def create(request):
         #                   gender=gender,
         #                   belong=belong,
         #                   subject=subject)
-        t1 = Regist()
-        register = RegistForm(request.POST, instance=t1)
+        obj = Regist()
+        register = RegistForm(request.POST, instance=obj)
         register.save()
         return redirect(to='/ex_db2')
-    return render(request, 'ex_db2/index.html', tmp)
 
 
 def edit(request, num):
     obj = Regist.objects.get(id=num)
     if request.method == 'GET':
         tmp['id'] = num
+        tmp['form'] = RegistForm(instance=obj)
         tmp['data'] = obj
         return render(request, 'ex_db2/edit.html', tmp)
     elif request.method == 'POST':
@@ -52,9 +52,8 @@ def delete(request, num):
     obj = Regist.objects.get(id=num)
     if request.method == 'GET':
         tmp['id'] = num
-        tmp['data'] = obj
+        tmp['data'] = [('ID',obj.id),('氏名',obj.name),('年齢',obj.age),('年齢',obj.belong),('年齢',obj.subject)]
         return render(request, 'ex_db2/delete.html', tmp)
     elif request.method == 'POST':
-        register = RegistForm(request.POST, instance=obj)
-        register.save()
+        Regist.objects.filter(id=num).delete()
         return redirect(to='/ex_db2')
