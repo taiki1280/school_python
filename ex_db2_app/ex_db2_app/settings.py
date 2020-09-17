@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'ex_db2_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'exdb',
+        'NAME': 'exdb2',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',

@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('exdb2/', include('exdb2.urls'))
+    path('ex_db2/', include('exdb2.urls'))
 ]
