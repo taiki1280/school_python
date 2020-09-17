@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Book
-from .forms import ex_db2Form
+from .forms import IdForm,AuthorForm
 
 
 def index(request):
@@ -11,16 +11,18 @@ def index(request):
     }
     if request.method == 'GET':
         params['data'] = Book.objects.all()
-        params['form'] = ex_db2Form()
+        params['id_form'] = IdForm()
+        params['author_form'] = AuthorForm()
         return render(request, 'ex_db2/index.html', params)
     elif request.method == 'POST':
-        params['form'] = ex_db2Form(request.POST)
+        params['id_form'] = IdForm(request.POST)
+        params['author_form'] = AuthorForm(request.POST)
         id_num = request.POST['ID']
         # if id_num != '':
-        #     # 検索結果無の時にも対応している
-        #     data = Book.objects.filter(id=id_num)
-        #     # 配列にしなければならないかつ、検索結果無の時はエラー
-        #     # data = [Book.objects.get(id=id_num)]
+            # 検索結果無の時にも対応している
+            # data = Book.objects.filter(id=id_num)
+            # 配列にしなければならないかつ、検索結果無の時はエラー
+            # data = [Book.objects.get(id=id_num)]
         # else:
         #     data = Book.objects.all()
         # 三項演算子

@@ -28,7 +28,8 @@
   <table class="table">
     <tr>
       <th>ID</th>
-      <th>著書</th>
+      <th>書名</th>
+      <th>著書名</th>
       <th>本？</th>
       <th>ISBN-10</th>
       <th>価格</th>
@@ -37,6 +38,7 @@
     <tr>
       <td>{{obj.id}}</td>
       <td>{{obj.title}}</td>
+      <td>{{obj.author}}</td>
       {% if obj.isBook %}
       <td>本</td>
       {% else %}
