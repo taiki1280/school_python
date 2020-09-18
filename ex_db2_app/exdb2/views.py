@@ -66,22 +66,21 @@ def find(request):
         tmp['form'] = FindForm()
         tmp['data'] = Regist.objects.all()
     if request.method == 'POST':
+        tmp['form'] = FindForm(request.POST)
         value = request.POST['value']
-
-        # value = value.split()
-        # tmp['data'] = Regist.objects.filter(age__gte=value[0]).filter(
-        #     age__lte=value[1])
-
-        # tmp['data'] = Regist.objects.filter(
-        #     Q(belong__contains=value) | Q(subject__contains=value))
-
-
-        values = value.split()
-        tmp['data'] = Regist.objects.filter(name__in=values)
-
-        # tmp['data'] = []
-        # for v in value:
-        #     tmp['data'] += Regist.objects.filter(subject__contains=v)
-
-        return render(request, 'ex_db2/find.html', tmp)
+        if request.POST["mode"] == FindForm.mode_list[0]:
+            value = value.split()
+            tmp['data'] = Regist.objects.filter(age__gte=value[0]).filter(
+                age__lte=value[1])
+        elif request.POST["mode"] == FindForm.mode_list[1]:
+            tmp['data'] = Regist.objects.filter(
+                Q(belong__contains=value) | Q(subject__contains=value))
+        elif request.POST["mode"] == FindForm.mode_list[2]:
+            values = value.split()
+            tmp['data'] = Regist.objects.filter(name__in=values)
+        elif request.POST["mode"] == FindForm.mode_list[3]:
+            value = value.split()
+            tmp['data'] = []
+            for v in value:
+                tmp['data'] += Regist.objects.filter(subject__contains=v)
     return render(request, 'ex_db2/find.html', tmp)

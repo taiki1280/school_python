@@ -30,4 +30,10 @@ class RegistForm(forms.ModelForm):
 
 
 class FindForm(forms.Form):
-    value = forms.CharField(widget=forms.TextInput, required=False)
+    mode_list = ["年齢以上以下", "コース・選択科目", "名前複数検索", "選択科目複数選択"]
+    mode = forms.ChoiceField(choices=[(v, v) for v in mode_list],
+                             widget=forms.Select(),
+                             label='検索方法')
+    value = forms.CharField(widget=forms.TextInput,
+                            required=False,
+                            label='入力せよ')
