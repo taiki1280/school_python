@@ -52,7 +52,8 @@ def delete(request, num):
     obj = Regist.objects.get(id=num)
     if request.method == 'GET':
         tmp['id'] = num
-        tmp['data'] = [('ID',obj.id),('氏名',obj.name),('年齢',obj.age),('年齢',obj.belong),('年齢',obj.subject)]
+        tmp['data'] = [('ID', obj.id), ('氏名', obj.name), ('年齢', obj.age),
+                       ('年齢', obj.belong), ('年齢', obj.subject)]
         return render(request, 'ex_db2/delete.html', tmp)
     elif request.method == 'POST':
         Regist.objects.filter(id=num).delete()
