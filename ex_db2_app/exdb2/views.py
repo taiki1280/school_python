@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from .forms import RegistForm
+from .forms import RegistForm, FindForm
 from .models import Regist
+from django.db.models import Q
 
 # Create your views here.
 tmp = {"title": "所属学生基本情報"}
@@ -58,3 +59,29 @@ def delete(request, num):
     elif request.method == 'POST':
         Regist.objects.filter(id=num).delete()
         return redirect(to='/ex_db2')
+
+
+def find(request):
+    if request.method == 'GET':
+        tmp['form'] = FindForm()
+        tmp['data'] = Regist.objects.all()
+    if request.method == 'POST':
+        value = request.POST['value']
+
+        # value = value.split()
+        # tmp['data'] = Regist.objects.filter(age__gte=value[0]).filter(
+        #     age__lte=value[1])
+
+        # tmp['data'] = Regist.objects.filter(
+        #     Q(belong__contains=value) | Q(subject__contains=value))
+
+
+        values = value.split()
+        tmp['data'] = Regist.objects.filter(name__in=values)
+
+        # tmp['data'] = []
+        # for v in value:
+        #     tmp['data'] += Regist.objects.filter(subject__contains=v)
+
+        return render(request, 'ex_db2/find.html', tmp)
+    return render(request, 'ex_db2/find.html', tmp)

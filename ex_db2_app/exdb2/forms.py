@@ -27,3 +27,7 @@ class RegistForm(forms.ModelForm):
     class Meta:
         model = Regist
         fields = ['name', 'age', 'gender', 'belong', 'subject']
+
+
+class FindForm(forms.Form):
+    value = forms.CharField(widget=forms.TextInput, required=False)

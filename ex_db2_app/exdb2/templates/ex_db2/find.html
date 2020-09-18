@@ -10,12 +10,18 @@
 </head>
 
 <body class="container">
-  <h1 class="display-4 text-primary">{{title}}</h1>
-  <p>
-    <a href="{% url 'create' %}">追加</a>
-    <a href="{% url 'find' %}">検索</a>
-  </p>
-  <table class="table">
+  <h1 class="display-4 text-primary">
+    {{title}}</h1>
+  <form action="{% url 'find' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <tr>
+      <th></th>
+      <td>
+        <input type="submit" value="click" class="btn btn-primary mt-2"></td>
+    </tr>
+  </form>
+  <table class="table mt-4">
     <tr>
       <th>ID</th>
       <th>氏名</th>
