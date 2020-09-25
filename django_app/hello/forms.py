@@ -27,9 +27,11 @@ class FindForm(forms.Form):
 
 
 class CheckForm(forms.Form):
-    date = forms.DateField(label='Date', input_formats=['%d'], \
-        widget=forms.DateInput(attrs={'class':'form-control'}))
-    time = forms.TimeField(label='Time', \
-        widget=forms.TimeInput(attrs={'class':'form-control'}))
-    datetime = forms.DateTimeField(label='DateTime', \
-        widget=forms.DateTimeInput(attrs={'class':'form-control'}))
+    str = forms.CharField(label='String', \
+        widget=forms.TextInput(attrs={'class':'form-control'}))
+
+    def clean(self):
+        cleaned_data = super().clean()
+        str = cleaned_data['str']
+        if (str.lower().startswith('no')):
+            raise forms.ValidationError('You input "NO"!')
