@@ -3,6 +3,16 @@ from django.shortcuts import redirect
 from .models import Friend
 # from .forms import HelloForm
 from .forms import FriendForm
+from django.views.generic import ListView, DetailView
+
+
+# ジェネリックビュー
+class FriendList(ListView):
+    model = Friend
+
+
+class FriendDetail(DetailView):
+    model = Friend
 
 
 def index(request):
