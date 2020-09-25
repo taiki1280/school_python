@@ -4,6 +4,7 @@ from .models import Friend
 # from .forms import HelloForm
 from .forms import FriendForm, FindForm
 from django.views.generic import ListView, DetailView
+from django.db.models import Q
 
 
 # ジェネリックビュー
@@ -67,13 +68,11 @@ def delete(request, num):
 
 def find(request):
     if (request.method == 'POST'):
+        msg = 'search result:'
         form = FindForm(request.POST)
         find = request.POST['find']
-        val = find.split()
-        # data = Friend.objects.filter(age__gte=val[0], age__lte=val[1])
-        # 書き方変更
-        data = Friend.objects.filter(age__gte=val[0]).filter(age__lte=val[1])
-        msg = 'search result: ' + str(data.count())
+        data = Friend.objects.filter(
+            Q(name__contains=find) | Q(mail__contains=find))
     else:
         msg = 'search words...'
         form = FindForm()
