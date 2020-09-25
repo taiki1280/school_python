@@ -69,7 +69,7 @@ def find(request):
     if (request.method == 'POST'):
         form = FindForm(request.POST)
         find = request.POST['find']
-        data = Friend.objects.filter(name=find)
+        data = Friend.objects.filter(name__contains=find)  #☆
         msg = 'Result: ' + str(data.count())
     else:
         msg = 'search words...'
