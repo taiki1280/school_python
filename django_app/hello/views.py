@@ -17,9 +17,10 @@ class FriendDetail(DetailView):
 
 
 def index(request):
-    data = Friend.objects.all()
+    data = Friend.objects.all().order_by('age')
     params = {
         'title': 'Hello',
+        'message': '',
         'data': data,
     }
     return render(request, 'hello/index.html', params)
