@@ -17,7 +17,7 @@ class FriendDetail(DetailView):
 
 
 def index(request):
-    data = Friend.objects.all().order_by('age')
+    data = Friend.objects.all().order_by('age').reverse()
     params = {
         'title': 'Hello',
         'message': '',
