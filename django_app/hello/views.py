@@ -3,7 +3,10 @@ from .models import Friend
 
 
 def index(request):
-    data = Friend.objects.all().values_list('id', 'name', 'age')
+    num = Friend.objects.all().count()
+    first = Friend.objects.all().first()
+    last = Friend.objects.all().last()
+    data = [num, first, last]
     params = {
         'title': 'Hello',
         'data': data,
