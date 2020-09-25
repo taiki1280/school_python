@@ -27,9 +27,9 @@ class FindForm(forms.Form):
 
 
 class CheckForm(forms.Form):
-    date = forms.DateField(label='Date', input_formats=['%d'], \
-        widget=forms.DateInput(attrs={'class':'form-control'}))
-    time = forms.TimeField(label='Time', \
-        widget=forms.TimeInput(attrs={'class':'form-control'}))
-    datetime = forms.DateTimeField(label='DateTime', \
-        widget=forms.DateTimeInput(attrs={'class':'form-control'}))
+    empty = forms.CharField(label='Empty', empty_value=True, \
+        widget=forms.TextInput(attrs={'class':'form-control'}))
+    min = forms.CharField(label='Min', min_length=10, \
+        widget=forms.TextInput(attrs={'class':'form-control'}))
+    max = forms.CharField(label='Max', max_length=10, \
+        widget=forms.TextInput(attrs={'class':'form-control'}))
