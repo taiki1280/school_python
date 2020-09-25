@@ -12,6 +12,7 @@
 <body class="container">
   <h1 class="display-4 text-primary">
     {{title}}</h1>
+  <p>{{msg}}</p>
   <form action="{% url 'find' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}

@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from .forms import RegistForm, FindForm
 from .models import Regist
 from django.db.models import Q
+from django.db.models import Avg, Sum, Count, Max, Min
 
 # Create your views here.
 tmp = {"title": "所属学生基本情報"}
@@ -12,6 +13,28 @@ def index(request):
     tmp['title'] = "所属学生基本情報"
     tmp['form'] = RegistForm(request.POST)
     tmp['data'] = Regist.objects.all()
+    value_head = ['項目数', '年齢合計', '年齢平均', '年齢最小値', '年齢最高値']
+    # 項目数
+    # 教科書
+    # items = []
+    items = Regist.objects.aggregate(Count('age'))
+    items += Regist.objects.aggregate(Avg('age'))
+    # items += Regist.objects.aggregate(Sum('age'))
+    # items += Regist.objects.aggregate(Max('age'))
+    # items += Regist.objects.aggregate(Min('age'))
+    tmp['value'] = [(k, v) for k, v in items.items()]
+
+    # 自作
+    # age_list = Regist.objects.values_list('age', flat=True)
+    # num = len(age_list)
+    # sum_age = 0
+    # for v in age_list:
+    #     sum_age += v
+    # ave_age = sum_age / num
+    # min_age = min(age_list)
+    # max_age = max(age_list)
+    # values = [num, sum_age, ave_age, min_age, max_age]
+    # tmp['value'] = [(k, v) for k, v in zip(value_head, values)]
     return render(request, 'ex_db2/index.html', tmp)
 
 
@@ -83,4 +106,10 @@ def find(request):
             tmp['data'] = []
             for v in value:
                 tmp['data'] += Regist.objects.filter(subject__contains=v)
+        elif request.POST["mode"] == FindForm.mode_list[4]:
+            sql = 'SELECT * FROM exdb2_regist'
+            if value != "":
+                sql += f' WHERE {value}'
+            tmp['data'] = Regist.objects.raw(sql)
+            tmp['msg'] = sql
     return render(request, 'ex_db2/find.html', tmp)

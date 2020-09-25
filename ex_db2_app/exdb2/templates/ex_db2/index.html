@@ -15,6 +15,11 @@
     <a href="{% url 'create' %}">追加</a>
     <a href="{% url 'find' %}">検索</a>
   </p>
+  <ul>
+    {% for v in value %}
+    <li>{{v.0}}：{{v.1}}</li>
+    {% endfor %}
+  </ul>
   <table class="table">
     <tr>
       <th>ID</th>
