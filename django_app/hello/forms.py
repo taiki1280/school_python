@@ -27,5 +27,9 @@ class FindForm(forms.Form):
 
 
 class CheckForm(forms.Form):
-    str = forms.CharField(label='Name',\
-        widget=forms.TextInput(attrs={'class':'form-control'}))
+    date = forms.DateField(label='Date', input_formats=['%d'], \
+        widget=forms.DateInput(attrs={'class':'form-control'}))
+    time = forms.TimeField(label='Time', \
+        widget=forms.TimeInput(attrs={'class':'form-control'}))
+    datetime = forms.DateTimeField(label='DateTime', \
+        widget=forms.DateTimeInput(attrs={'class':'form-control'}))
