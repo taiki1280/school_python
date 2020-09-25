@@ -71,8 +71,8 @@ def find(request):
         msg = 'search result:'
         form = FindForm(request.POST)
         find = request.POST['find']
-        data = Friend.objects.filter(
-            Q(name__contains=find) | Q(mail__contains=find))
+        list = find.split()
+        data = Friend.objects.filter(name__in=list)
     else:
         msg = 'search words...'
         form = FindForm()
