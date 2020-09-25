@@ -4,15 +4,34 @@ from .forms import RegistForm, FindForm
 from .models import Regist
 from django.db.models import Q
 from django.db.models import Avg, Sum, Count, Max, Min
+from django.core.paginator import Paginator
 
 # Create your views here.
 tmp = {"title": "所属学生基本情報"}
 
+# def index(request, num=1):
+#     data = Friend.objects.all()
+#     page = Paginator(data, 3)
+#     params = {
+#         'title': 'Hello',
+#         'message': '',
+#         'data': page.get_page(num),
+#     }
+#     return render(request, 'hello/index.html', params)
 
-def index(request):
+
+def index(request, num=0):
+    data = Regist.objects.all()
+    tmp['data'] = data
+    if num == 0:
+        tmp['data'] = data
+        tmp['pagi'] = False
+    else:
+        page = Paginator(data, 3)
+        tmp['data'] = page.get_page(num)
+        tmp['pagi'] = True
     tmp['title'] = "所属学生基本情報"
     tmp['form'] = RegistForm(request.POST)
-    tmp['data'] = Regist.objects.all()
     value_head = ['項目数', '年齢合計', '年齢平均', '年齢最小値', '年齢最高値']
     # 項目数
     # 教科書
