@@ -17,24 +17,24 @@ def index(request):
     # 項目数
     # 教科書
     # items = []
-    items = Regist.objects.aggregate(Count('age'))
-    items += Regist.objects.aggregate(Avg('age'))
+    # items = Regist.objects.aggregate(Count('age'))
+    # items += Regist.objects.aggregate(Avg('age'))
     # items += Regist.objects.aggregate(Sum('age'))
     # items += Regist.objects.aggregate(Max('age'))
     # items += Regist.objects.aggregate(Min('age'))
-    tmp['value'] = [(k, v) for k, v in items.items()]
+    # tmp['value'] = [(k, v) for k, v in items.items()]
 
     # 自作
-    # age_list = Regist.objects.values_list('age', flat=True)
-    # num = len(age_list)
-    # sum_age = 0
-    # for v in age_list:
-    #     sum_age += v
-    # ave_age = sum_age / num
-    # min_age = min(age_list)
-    # max_age = max(age_list)
-    # values = [num, sum_age, ave_age, min_age, max_age]
-    # tmp['value'] = [(k, v) for k, v in zip(value_head, values)]
+    age_list = Regist.objects.values_list('age', flat=True)
+    num = len(age_list)
+    sum_age = 0
+    for v in age_list:
+        sum_age += v
+    ave_age = sum_age / num
+    min_age = min(age_list)
+    max_age = max(age_list)
+    values = [num, sum_age, ave_age, min_age, max_age]
+    tmp['value'] = [(k, v) for k, v in zip(value_head, values)]
     return render(request, 'ex_db2/index.html', tmp)
 
 
@@ -113,3 +113,17 @@ def find(request):
             tmp['data'] = Regist.objects.raw(sql)
             tmp['msg'] = sql
     return render(request, 'ex_db2/find.html', tmp)
+
+
+def check(request):
+    tmp['message'] = 'check validation.'
+    tmp['form'] = RegistForm(),
+    if (request.method == 'POST'):
+        obj = Regist()
+        form = RegistForm(request.POST, instance=obj)
+        tmp['form'] = form
+        if (form.is_valid()):
+            tmp['message'] = 'OK!'
+        else:
+            tmp['message'] = 'no good.'
+    return render(request, 'ex_db2/check.html', tmp)
