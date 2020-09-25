@@ -1,12 +1,11 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator, URLValidator
 
 
 class Friend(models.Model):
     name = models.CharField(max_length=100, \
-        validators=[MinLengthValidator(10)])
-    mail = models.EmailField(max_length=200, \
-         validators=[MinLengthValidator(10)])
+        validators=[URLValidator()])
+    mail = models.EmailField(max_length=200)
     gender = models.BooleanField()
     age = models.IntegerField()
     birthday = models.DateField()
