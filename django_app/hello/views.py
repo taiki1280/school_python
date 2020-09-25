@@ -69,7 +69,26 @@ def find(request):
     if (request.method == 'POST'):
         form = FindForm(request.POST)
         find = request.POST['find']
+        # 完全一致
+        # data = Friend.objects.filter(name=find)
+        # 前方一致
+        # data = Friend.objects.filter(name__startswith=find)
+        # 後方一致
+        # data = Friend.objects.filter(name__endswith=find)
+        # 部分一致
+        # data = Friend.objects.filter(name__contains=find)
+
+        # 大文字小文字の区別をしない
+        # 完全一致
         data = Friend.objects.filter(name__iexact=find)
+        # 前方一致
+        # data = Friend.objects.filter(name__istartswith=find)
+        # 後方一致
+        # data = Friend.objects.filter(name__iendswith=find)
+        # 部分一致
+        # data = Friend.objects.filter(name__icontains=find)
+
+        # data = Friend.objects.filter(age__lte=int(find))
         msg = 'Result: ' + str(data.count())
     else:
         msg = 'search words...'
