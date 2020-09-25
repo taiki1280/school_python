@@ -19,3 +19,8 @@ class HelloForm(forms.Form):
         widget=forms.NumberInput(attrs={'class':'form-control'}))
     birthday = forms.DateField(label='Birth', \
         widget=forms.DateInput(attrs={'class':'form-control'}))
+
+
+class FindForm(forms.Form):
+    find = forms.CharField(label='Find', required=False, \
+        widget=forms.TextInput(attrs={'class':'form-control'}))
