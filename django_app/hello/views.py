@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Friend
+from .models import Friend, Message
 # from .forms import HelloForm
-from .forms import FriendForm, FindForm, CheckForm
+from .forms import FriendForm, FindForm, CheckForm, MessageForm
 from django.views.generic import ListView, DetailView
 from django.db.models import Q, Count, Sum, Avg, Min, Max
 from django.core.paginator import Paginator
@@ -105,3 +105,18 @@ def check(request):
         else:
             params['message'] = 'no good.'
     return render(request, 'hello/check.html', params)
+
+
+def message(request, page=1):
+    if (request.method == 'POST'):
+        obj = Message()
+        form = MessageForm(request.POST, instance=obj)
+        form.save()
+    data = Message.objects.all().reverse()
+    paginator = Paginator(data, 5)
+    params = {
+        'title': 'Message',
+        'form': MessageForm(),
+        'data': paginator.get_page(page),
+    }
+    return render(request, 'hello/message.html', params)
