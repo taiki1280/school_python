@@ -136,7 +136,7 @@ def find(request):
 
 def check(request):
     tmp['message'] = 'check validation.'
-    tmp['form'] = RegistForm(),
+    tmp['form'] = RegistForm()
     if (request.method == 'POST'):
         obj = Regist()
         form = RegistForm(request.POST, instance=obj)
