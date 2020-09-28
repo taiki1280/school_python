@@ -48,8 +48,7 @@
   <ul class="pagination">
     {% if data.has_previous %}
     <li class="page-item">
-      <a class="page-link" href="{% url 'index' %}">
-        &laquo; 最初のページ</a>
+      <a class="page-link" href="{% url 'index' 1 %}">&laquo; 最初のページ</a>
     </li>
     <li class="page-item">
       <a class="page-link" href="{% url 'index' %}{{data.previous_page_number}}">
@@ -57,35 +56,30 @@
     </li>
     {% else %}
     <li class="page-item">
-      <a class="page-link">
-        &laquo; 次へ</a>
+      <a class="page-link">&laquo; 最初のページです</a>
     </li>
-    <li class="page-item">
+    <!-- <li class="page-item">
       <a class="page-link">
         &laquo; 最後のページへ</a>
-    </li>
+    </li> -->
     {% endif %}
     <li class="page-item">
-      <a class="page-link">
-        {{data.number}}/{{data.paginator.num_pages}}</a>
+      <a class="page-link">{{data.number}}/{{data.paginator.num_pages}}</a>
     </li>
     {% if data.has_next %}
     <li class="page-item">
-      <a class="page-link" href="{% url 'index' %}{{data.next_page_number }}">
-        next &raquo;</a>
+      <a class="page-link" href="{% url 'index' %}{{data.next_page_number }}">次へ &raquo;</a>
     </li>
     <li class="page-item">
-      <a class="page-link" href="{% url 'index' %}{{data.paginator.num_pages}}">
-        last &raquo;</a>
+      <a class="page-link" href="{% url 'index' %}{{data.paginator.num_pages}}">最後のページへ &raquo;</a>
     </li>
     {% else %}
-    <li class="page-item">
+    <!-- <li class="page-item">
       <a class="page-link">
-        next &raquo;</a>
-    </li>
+        次へ &raquo;</a>
+    </li> -->
     <li class="page-item">
-      <a class="page-link">
-        last &raquo;</a>
+      <a class="page-link">最後のページです &raquo;</a>
     </li>
     {% endif %}
   </ul>
