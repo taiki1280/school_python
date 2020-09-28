@@ -29,7 +29,7 @@ jissyu = [
     "ex_forms5", "ex_forms6"
 ]
 
-lesson = ["hello"]
+lesson = ["hello", "sns"]
 
 test = [""]
 
