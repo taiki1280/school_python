@@ -21,8 +21,12 @@ tmp = {"title": "所属学生基本情報"}
 
 
 def index(request, num=0):
-    data = Regist.objects.all()
-    tmp['data'] = data
+    # data = Regist.objects.all()
+    # 辞書として受け取る。（データの中身を変更するため）
+    data = Regist.objects.values()
+    # 文字列を配列として展開する
+    for v in data:
+        v["subject"] = eval(v["subject"])
     if num == 0:
         tmp['data'] = data
         tmp['pagi'] = False

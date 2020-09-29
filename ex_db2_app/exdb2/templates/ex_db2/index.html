@@ -10,6 +10,7 @@
 </head>
 
 <body class="container">
+  <h1>{{test}}</h1>
   <h1 class="display-4 text-primary">{{title}}</h1>
   <p>
     <a href="{% url 'create' %}">追加</a>
@@ -38,7 +39,13 @@
       <td>{{obj.age}}</td>
       <td>{{obj.gender}}</td>
       <td>{{obj.belong}}</td>
-      <td>{{obj.subject}}</td>
+      <td>
+        <ul>
+          {% for v in obj.subject %}
+          <li>{{v}}</li>
+          {% endfor %}
+        </ul>
+      </td>
       <td><a href="{% url 'edit' obj.id %}">修正</a></td>
       <td><a href="{% url 'delete' obj.id %}">削除</a></td>
     </tr>
