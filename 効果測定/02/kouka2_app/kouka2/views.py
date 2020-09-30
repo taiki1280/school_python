@@ -72,4 +72,10 @@ def find(request):
             tmp['data'] = []
             for v in value:
                 tmp['data'] += Kouka2.objects.filter(Attachment__contains=v)
+        elif request.POST["mode"] == FindForm.mode_list[4]:
+            sql = 'SELECT * FROM kouka2_kouka2'
+            if value != "":
+                sql += f' WHERE {value}'
+            tmp['data'] = Kouka2.objects.raw(sql)
+            tmp['msg'] = sql
     return render(request, 'kouka2/find.html', tmp)

@@ -31,7 +31,7 @@ class RegistForm(forms.ModelForm):
 
 
 class FindForm(forms.Form):
-    mode_list = ["価格以上以下", "配送先・添付情報", "商品名複数検索", "添付情報複数選択"]
+    mode_list = ["価格以上以下", "配送先・添付情報", "商品名複数検索", "添付情報複数選択", "SQL文"]
     mode = forms.ChoiceField(choices=[(v, v) for v in mode_list],
                              widget=forms.Select(),
                              label='検索方法')
