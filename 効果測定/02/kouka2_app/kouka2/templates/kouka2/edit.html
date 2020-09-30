@@ -4,13 +4,22 @@
 
 <head>
   <meta charset="utf-8">
-  <title>編集画面{{title}}</title>
+  <title>{{title}}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     crossorigin="anonymous">
+  <!-- スクロールバーを非表示（ぐらつきを考慮） -->
+  <style>
+    .container::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="container">
   <h1 class="display-4 text-primary">{{title}}</h1>
+  <p>
+    <a href="{% url 'index' %}">トップに戻る</a>
+  </p>
   {% if request.method == 'GET' %}
   <form action="{% url 'edit' id %}" method="POST">
     {% csrf_token %}

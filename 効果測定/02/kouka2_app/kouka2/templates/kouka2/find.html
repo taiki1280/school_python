@@ -7,15 +7,30 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     crossorigin="anonymous">
+  <!-- スクロールバーを非表示（ぐらつきを考慮） -->
+  <style>
+    .container::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="container">
-  <h1 class="display-4 text-primary">
-    {{title}}</h1>
-  <form action="{% url 'find' %}" method="POST">
+  <h1 class="display-4 text-primary">{{title}}</h1>
+  <p>
+    <a href="{% url 'index' %}">トップに戻る</a>
+  </p>
+  {% if request.method == 'POST' %}
+  <div>
+    {{sql}}
+  </div>
+  {% else %}
+  <div>検索...</div>
+  {% endif %}
+  <form action action="{% url 'find' %}" method="POST" class="form-group">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="検索" class="btn btn-primary mt-2"></td>
+    {{ form.as_p}}
+    <input type="submit" value="検索" class="btn btn-primary mt-2">
   </form>
   <table class="table mt-4">
     <tr>
@@ -43,7 +58,7 @@
   </table>
   {% if request.method == 'POST' %}
   <form action="{% url 'find' %}" method="GET">
-    <input type="submit" value="戻る" class="btn btn-primary mt-2"></td>
+    <input type="submit" value="検索結果を初期化" class="btn btn-primary mt-2"></td>
   </form>
   {% endif %}
 </body>

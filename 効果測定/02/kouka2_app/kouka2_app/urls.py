@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from kouka2_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # local:8000でアクセス時にリダイレクトする設定
+    path('', views.start, name='start'),
     path('kouka2/', include('kouka2.urls'))
 ]
