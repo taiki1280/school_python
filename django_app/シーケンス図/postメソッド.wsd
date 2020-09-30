@@ -1,0 +1,32 @@
+@startuml
+actor user
+boundary "django_app/urls.py" as urls0
+boundary "sns/urls.py" as urls
+control "sns/views.py" as views
+
+boundary "index.html"
+boundary "post.html"
+
+boundary "sns/forms.py" as forms
+entity "mini_sns" as DB
+
+' user -> urls0 :[GET]/sns/
+' urls0 -> urls :snsアプリケーションに飛ばす
+user <-- "index.html"
+user -> urls:[GET] POSTメニューをクリック
+urls -> views :path(post)
+views <- forms :MessageForm\n（メッセージフォームの型）を取得
+views -> "post.html"
+
+user -> urls :[POST] ボタンをクリック
+' postメソッド
+urls -> views :path(post)
+views -> web :request.POST['groups']
+views -> web :request.POST['content']
+views -> web :owner=request.user,title=gr_nameの条件\nで最初のカラムのデータのみを取得
+views <-- web
+views -> DB :取得したgroupとcontentとログインしている\nユーザー情報を__messageテーブルに登録
+views -> urls :redirect(/sns)
+urls -> "index.html" :index()
+
+@enduml

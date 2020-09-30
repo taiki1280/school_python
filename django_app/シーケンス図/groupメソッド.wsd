@@ -1,0 +1,55 @@
+@startuml
+actor user
+boundary "django_app/urls.py" as urls0
+boundary "sns/urls.py" as urls
+control "sns/views.py" as views
+
+boundary "index.html"
+boundary "groups.html"
+
+boundary "sns/forms.py" as forms
+boundary "sns/models.py" as models
+entity "mini_sns" as DB
+
+' user -> urls0 :[GET]/sns/
+' urls0 -> urls :snsアプリケーションに飛ばす
+user <-- "index.html"
+user -> urls0:[GET] Groupメニューをクリック
+urls0 -> urls :path(sns)
+urls -> views :path(groups)
+views <- forms :GroupForm\n（グループフォームの型）を取得
+views <- forms :FriendsForm\n（フレンズフォームの型）を取得
+views <- forms :CreateGroupForm\n（クリエイトグループフォームの型）を取得
+views -> "groups.html" :render()
+
+user -> urls0 :[POST] New Groupボタンをクリック
+urls0 -> urls :path(sns)
+urls -> views :path(groups)
+' groupsメソッド
+views <- models: owner=request.userの条件でFriendオブジェクトを取り出す
+
+alt request.POST['mode'] == '__groups_form__'
+views -> web :request.POST['groups']
+views <-- web
+views <- models :owner=request.user,title=sel_groupの条件で最初のGroupオブジェクトを取得
+views <- models :owner=request.user,group=取得した最初のグループの条件で全てのFriendオブジェクトを取り出す
+
+views <- forms :GroupSelectFormを取得
+views <- forms :FriendsFormを取得(あらかじめ用意したFriendオブジェクトからUserをリストにまとめて送る)
+else request.POST['mode'] == '__friends_form__'
+views -> web :request.POST['groups']
+views <-- web
+views <- models :owner=request.user,title=sel_groupの条件で最初のGroupオブジェクトを取得
+views -> web :request.POST['friends']（リスト）
+views <-- web
+views <- models :owner=request.user,user__in=sel_usersの条件でFriendオブジェクトを取得する
+
+
+views <- models :owner=request.user,title=sel_groupの条件で最初のGroupオブジェクトを取得
+views <- models :owner=request.user,group=取得した最初のグループの条件で全てのFriendオブジェクトを取り出す
+views <- forms :GroupSelectFormを取得する
+views <- forms :FriendsFormを取得(あらかじめ用意したFriendオブジェクトからUserをリストにまとめて送る)
+end
+views <- forms :CreateGroupFormを取得
+views -> "groups.html" :render(request.userを設定,groupsformを設定,friendsformを設定,createformを設定,sel_groupを設定)
+@enduml
