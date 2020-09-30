@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+</head>
+
+<body class="container">
+  <h1 class="display-4 text-primary">{{title}}</h1>
+  <form action="{% url 'delete' id %}" method="post">
+    {% csrf_token %}
+    <table class="table">
+      {% for k,v in data %}
+      <tr>
+        <th>{{k}}</th>
+        <td>{{v}}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <th></th>
+        <td>
+          <button class="btn btn-primary" type=" submit">削除</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>
