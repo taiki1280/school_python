@@ -1,4 +1,4 @@
-@startuml
+@startuml Groupを作成する
 actor user
 boundary "django_app/urls.py" as urls0
 boundary "sns/urls.py" as urls
