@@ -9,6 +9,10 @@ def index(request):
     request.session['UUID'] = UUID
 
     return render(request, "index.html")
+    # response = {
+    #     "title": "index",
+    # }
+    # return JsonResponse(response, safe=False)
 
 
 def get(request):
@@ -17,6 +21,7 @@ def get(request):
         "message": "GET処理",
         "UUID": request.session['UUID'] if ("UUID" in request.session) else "Nothing",
         "CSRF": request.COOKIES['csrftoken'] if ("csrftoken" in request.COOKIES) else "Nothing",
+        "name" : "Ryo"
     }
     return JsonResponse(response, safe=False)
 
